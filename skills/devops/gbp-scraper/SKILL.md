@@ -1,23 +1,36 @@
 ---
 name: gbp-scraper
-description: "Scrape Google Business Profile reviews, ratings, and response data using Puppeteer with stealth plugin. Falls back to gap-highlighting dataset on failure."
-version: 1.0.0
+description: "Get Google Business Profile reviews, ratings, and response data via the Google Places API (New). No browser scraping — reliable and fast."
+version: 2.0.0
 author: MAS Orchestrator
 license: MIT
 platforms: [linux]
 metadata:
   hermes:
-    tags: [mas, gbp, google-business, scraper, puppeteer, stealth, reviews]
+    tags: [mas, gbp, google-business, places-api, reviews, ratings]
     related_skills: [marketing-audit]
 ---
 
-# GBP Scraper — Google Business Profile Audit
+# GBP Scraper — Google Business Profile Audit v2
 
-Scrapes Google Business Profile data for the marketing audit pipeline.
+Gets Google Business Profile data via the **Google Places API (New)**. No browser, no Puppeteer, no CAPTCHAs. Reliable and fast.
+
+## Prerequisites
+
+**Required:** `GOOGLE_PLACES_API_KEY` environment variable.
+
+To get a key:
+1. Go to [console.cloud.google.com](https://console.cloud.google.com)
+2. Select your GCP project
+3. Enable **Places API (New)** under APIs & Services → Library
+4. Create an API key under APIs & Services → Credentials
+5. Set as env var: `GOOGLE_PLACES_API_KEY=AIza...`
+
+**PITFALL — Do NOT use Puppeteer for GBP scraping.** Google blocks headless browsers aggressively. CAPTCHAs, timeouts, and rate limits make it unreliable. The Places API is the only production-grade approach. Samuel explicitly flagged this: "Puppeteer is rather unreliable" for GBP work.
 
 ## Input
 
-- `business_name` or `url` — the business to look up
+- `business_name` — the business to look up (e.g. "African Sky Hotels and Resorts")
 - `temp_dir` — where to write `gbp-data.json` (default: `/home/samuelj121314/mas-system/temp/`)
 
 ## Output
@@ -25,7 +38,7 @@ Scrapes Google Business Profile data for the marketing audit pipeline.
 `gbp-data.json` with structure:
 ```json
 {
-  "business_name": "Example Hotel",
+  "business_name": "African Sky Hotels and Resorts",
   "rating": 4.2,
   "review_count": 127,
   "response_rate": 0.35,
@@ -40,38 +53,44 @@ Scrapes Google Business Profile data for the marketing audit pipeline.
       "response_date": null
     }
   ],
-  "scraped_at": "2026-05-26T12:00:00Z",
-  "source": "google-business-profile"
+  "scraped_at": "2026-05-27T12:00:00Z",
+  "source": "places-api"
 }
 ```
 
 ## Method
 
-### Option A: Puppeteer Stealth (Preferred)
+### Step 1: Search for the Place
 
-Use the `mcp_puppeteer` tools with stealth:
-
-```python
-# Navigate to Google search for the business
-mcp_puppeteer_puppeteer_navigate(url=f"https://www.google.com/search?q={business_name}+google+reviews")
-
-# Wait for results, then extract
-# Use mcp_puppeteer_puppeteer_evaluate to extract review data from the DOM
+```bash
+curl -s "https://places.googleapis.com/v1/places:searchText" \
+  -H "Content-Type: application/json" \
+  -H "X-Goog-Api-Key: $GOOGLE_PLACES_API_KEY" \
+  -H "X-Goog-FieldMask: places.id,places.displayName,places.rating,places.userRatingCount,places.reviews,places.formattedAddress" \
+  -d '{"textQuery": "<business_name> <city> <country>", "maxResultCount": 3}'
 ```
 
-### Option B: Google Maps Scrape
+### Step 2: Get Place Details (if needed)
 
-```python
-mcp_puppeteer_puppeteer_navigate(url=f"https://www.google.com/maps/search/{business_name}")
-# Extract rating, review count, individual reviews
+```bash
+curl -s "https://places.googleapis.com/v1/places/<PLACE_ID>" \
+  -H "X-Goog-Api-Key: $GOOGLE_PLACES_API_KEY" \
+  -H "X-Goog-FieldMask: id,displayName,rating,userRatingCount,reviews,formattedAddress,websiteUri,regularOpeningHours,nationalPhoneNumber"
 ```
+
+### Step 3: Parse and Write JSON
+
+Parse the API response into the `gbp-data.json` structure. Compute:
+- `response_rate` = reviews with responses / total reviews
+- `avg_response_time_hours` = average hours between review and response (if response timestamps available)
 
 ### Fallback: Gap-Highlighting Dataset
 
-If scraping fails (CAPTCHA, rate limit, no results), return:
+If the API returns no results or the key is unavailable:
 ```json
 {
-  "business_name": "Unknown (scraping failed)",
+  "found": false,
+  "business_name": "<searched_name>",
   "rating": 0,
   "review_count": 0,
   "response_rate": 0,
@@ -89,14 +108,19 @@ Cache results for 24 hours in `/home/samuelj121314/mas-system/temp/gbp-cache/`. 
 
 ## Rate Limiting
 
-- Max 3 scrape attempts per run
-- 5-second delay between attempts
-- If CAPTCHA detected, immediately fall back to gap dataset
+- Places API free tier: generous quota
+- If rate limited (429), wait 2 seconds and retry once
+- If still failing, use fallback dataset
 
 ## Gap Analysis
 
-After scraping, compute:
+After getting data, compute:
 - `response_rate` = reviews with responses / total reviews
 - If response_rate < 0.5 → flag as "Low response rate — AI auto-response recommended"
 - If review_count < 50 → flag as "Low review volume — ReviewTap NFC stand can help"
 - If avg_response_time > 24h → flag as "Slow response time — AI can respond instantly"
+- If no GBP found at all → flag as critical gap (see fallback above)
+
+## Cost
+
+Places API (New) has a free tier. Text Search costs ~$0.031 per request. For audit pipeline usage (tens of runs/day), this stays within free tier or costs pennies. **Never use paid OpenRouter models for this — the API call is cheaper and more reliable.**

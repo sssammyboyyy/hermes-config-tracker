@@ -67,9 +67,11 @@ def validate_business_type(bt):
 
 ### 1. GBP Audit Agent
 
-Use `gbp-scraper` skill. Output: `gbp-data.json`.
+Use `gbp-scraper` skill (v2 — Places API). Output: `gbp-data.json`.
 
-**Fallback if scraping fails (CAPTCHA, no GBP):**
+**⚠ PITFALL — Do NOT use Puppeteer for GBP.** Samuel explicitly flagged this: "Puppeteer is rather unreliable." Google blocks headless browsers. Use the Google Places API via curl. Requires `GOOGLE_PLACES_API_KEY` env var. If the key is not set, the skill falls back to the gap-highlighting dataset — which is still a valid and compelling narrative.
+
+**Fallback if API returns no results (no GBP):**
 
 ```json
 {
@@ -147,6 +149,16 @@ Final response must contain:
 ## Temp File Cleanup
 
 After report generation, clean up `/home/samuelj121314/mas-system/temp/` but keep the final HTML report.
+
+## Skill Library Hygiene
+
+Keep the skill library lean. After cleanup work or major sessions:
+- Delete unused skill categories from `~/.hermes/skills/` (keep only `devops/` for MAS work)
+- Delete Puppeteer cache (`~/.cache/puppeteer/`) if not needed immediately
+- Delete `node_modules/puppeteer` if Chromium cache was cleared
+- Force-push lean GitHub repos to remove history bloat
+
+See `hermes-config` skill references for detailed cleanup procedures.
 
 ## Exponential Refinement Tracking
 

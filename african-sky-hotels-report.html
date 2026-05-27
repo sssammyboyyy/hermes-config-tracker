@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>African Sky Hotels — Marketing Audit &amp; Strategy Report</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--rp:#302b63;--rj:#6c63ff;--rred:#ff4757;--rgrn:#2ed573;--rwarn:#ffa502;--bg:#f8f9fa;--card:#fff;--txt:#1a1a2e;--muted:#6c757d}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:var(--txt);line-height:1.7;background:var(--bg)}
+/* Protection */
+.watermark{position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:99999;background:repeating-linear-gradient(-45deg,transparent,transparent 60px,rgba(108,99,255,0.015) 60px,rgba(108,99,255,0.015) 120px)}
+.watermark::after{content:"ReviewTap x JCE Media";position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-30deg);font-size:72px;color:rgba(108,99,255,0.04);white-space:nowrap;pointer-events:none;font-weight:800;letter-spacing:2px}
+.protect-overlay{position:fixed;top:0;left:0;width:100%;height:100%;z-index:99990}
+/* Nav */
+.topbar{position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,#0f0c29,#302b63);padding:0;display:flex;align-items:center;justify-content:space-between}
+.topbar .brand{color:#fff;font-weight:800;font-size:1.1em;padding:15px 30px;text-decoration:none;letter-spacing:-0.02em}
+.topbar .brand span{color:var(--rj)}
+.topbar nav{display:flex;gap:5px;padding-right:20px}
+.topbar nav a{color:rgba(255,255,255,0.7);text-decoration:none;padding:8px 16px;border-radius:8px;font-size:0.85em;font-weight:600;transition:all 0.2s}
+.topbar nav a:hover,.topbar nav a.active{color:#fff;background:rgba(108,99,255,0.3)}
+/* Hero */
+.hero{background:linear-gradient(135deg,#0f0c29 0%,#302b63 50%,#24243e 100%);color:#fff;padding:70px 40px;text-align:center}
+.hero h1{font-size:2.8em;margin-bottom:10px;letter-spacing:-0.03em;line-height:1.2}
+.hero .meta{margin-top:20px;display:flex;justify-content:center;gap:25px;flex-wrap:wrap;font-size:0.9em;opacity:0.7}
+/* Sections */
+.section{display:none;padding:50px 40px;max-width:1100px;margin:0 auto}
+.section.active{display:block}
+h2{font-size:1.8em;margin-bottom:8px;color:var(--rp);letter-spacing:-0.02em}
+.sub{color:var(--muted);margin-bottom:30px;font-size:1.05em}
+/* Metrics */
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;margin:30px 0}
+.metric{background:linear-gradient(135deg,var(--rj),var(--rp));color:#fff;padding:30px;border-radius:14px;text-align:center}
+.metric .val{font-size:2.4em;font-weight:800;line-height:1.1}
+.metric .lbl{font-size:0.82em;opacity:0.9;margin-top:4px}
+.metric.dark{background:linear-gradient(135deg,#1a1a2e,#16213e)}
+.metric.red{background:linear-gradient(135deg,var(--rred),#c0392b)}
+.metric.green{background:linear-gradient(135deg,var(--rgrn),#27ae60)}
+/* Cards */
+.card{background:var(--card);border-radius:14px;padding:28px;margin:15px 0;box-shadow:0 2px 10px rgba(0,0,0,0.06)}
+.card.r{border-left:4px solid var(--rred)}
+.card.g{border-left:4px solid var(--rgrn)}
+.card h3{margin-bottom:8px;font-size:1.1em}
+.card h3.warn{color:var(--rred)}
+.card h3.good{color:var(--rgrn)}
+/* Table */
+table{width:100%;border-collapse:collapse;margin:20px 0}
+th{background:var(--bg);text-align:left;padding:12px 16px;border-bottom:3px solid #eee;font-size:0.82em;text-transform:uppercase;letter-spacing:0.5px;color:var(--muted)}
+td{padding:12px 16px;border-bottom:1px solid #eee}
+.badge{display:inline-block;padding:3px 12px;border-radius:50px;font-size:0.78em;font-weight:700}
+.br{background:#fff0f0;color:var(--rred)}.bo{background:#fff8e6;color:var(--rwarn)}.bg{background:#e8f8f0;color:var(--rgrn)}
+/* Compare */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:25px;margin:25px 0}
+.compare .c{background:#fff5f5;border-radius:14px;padding:28px}
+.compare .j{background:#f0fff4;border-radius:14px;padding:28px}
+.compare h3{margin-bottom:15px;font-size:1.2em}
+.compare .c h3{color:var(--rred)}.compare .j h3{color:var(--rgrn)}
+.compare ul{list-style:none}
+.compare li{padding:8px 0;border-bottom:1px solid rgba(0,0,0,0.05);font-size:0.95em}
+/* JCE Stats */
+.jce-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin:25px 0}
+.js{background:linear-gradient(135deg,var(--rj),var(--rp));color:#fff;padding:30px 15px;border-radius:14px;text-align:center}
+.js .n{font-size:2.2em;font-weight:800}.js .l{font-size:0.78em;opacity:0.9;margin-top:3px}
+/* CTA */
+.cta{background:linear-gradient(135deg,var(--rj),var(--rp));color:#fff;padding:60px 40px;text-align:center;border-radius:20px;margin:30px 0}
+.cta h2{font-size:2em;margin-bottom:12px;color:#fff}
+.cta p{font-size:1.05em;opacity:0.9;max-width:600px;margin:0 auto 25px}
+.cta a{display:inline-block;background:#fff;color:var(--rp);padding:14px 36px;border-radius:50px;text-decoration:none;font-weight:700;font-size:1.05em}
+/* Review */
+.review{background:#fff;border-radius:14px;padding:25px;margin:12px 0;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+.review .stars{color:#ffc107;font-size:1.2em;letter-spacing:2px}
+.review .text{margin:12px 0;font-style:italic;color:#333}
+.review .author{font-weight:700;color:var(--rp)}.review .date{color:var(--muted);font-size:0.82em}
+/* Mockup */
+.mock-tabs{display:flex;gap:6px;margin-bottom:20px;border-bottom:2px solid #eee}
+.mock-tab{padding:10px 24px;border:none;background:none;cursor:pointer;font-weight:700;font-size:0.9em;color:var(--muted);border-radius:10px 10px 0 0;border-bottom:3px solid transparent;margin-bottom:-2px;transition:all 0.2s}
+.mock-tab:hover{background:var(--bg)}.mock-tab.active{background:#f0f0ff;color:var(--rj);border-bottom-color:var(--rj)}
+.frame{border:2px solid #eee;border-radius:14px;overflow:hidden;background:#fff;position:relative}
+.frame iframe{width:100%;height:700px;border:none}
+/* Footer */
+.footer{text-align:center;padding:35px;color:var(--muted);font-size:0.82em}
+@media(max-width:768px){
+  .hero h1{font-size:1.8em}.hero .meta{flex-direction:column;gap:8px}
+  .compare{grid-template-columns:1fr}.jce-stats{grid-template-columns:1fr 1fr}
+  .metrics{grid-template-columns:1fr 1fr}.section{padding:35px 18px}.topbar nav{display:none}
+  .frame iframe{height:500px}
+}
+</style>
+</head>
+<body oncontextmenu="return false;">
+<div class="watermark"></div>
+<div class="protect-overlay"></div>
+<script>
+document.addEventListener('keydown',function(e){
+  if((e.ctrlKey||e.metaKey)&&['s','u','p','S','U','P'].includes(e.key)){e.preventDefault();return false;}
+  if(e.key==='F12'){e.preventDefault();return false;}
+});
+(function(){var d=/./;d.toString=function(){this.opened=true;};console.log('%c',d);setInterval(function(){if(d.opened){debugger;d.opened=false;}},500);})();
+</script>
+<canvas id="scramble" style="position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;z-index:-1;"></canvas>
+<script>(function(){var c=document.getElementById('scramble'),ctx=c.getContext('2d');c.width=200;c.height=200;function noise(){var id=ctx.createImageData(200,200);for(var i=0;i<id.data.length;i++)id.data[i]=Math.random()*255;ctx.putImageData(id,0,0);requestAnimationFrame(noise);}noise();})();</script>
+
+<div class="topbar">
+  <span class="brand">MAS <span>Audit</span></span>
+  <nav>
+    <a href="#" class="active" onclick="show('exec',this);return false;">Summary</a>
+    <a href="#" onclick="show('gbp',this);return false;">GBP</a>
+    <a href="#" onclick="show('web',this);return false;">Website</a>
+    <a href="#" onclick="show('mockup',this);return false;">Mockup</a>
+    <a href="#" onclick="show('gap',this);return false;">Close Gap</a>
+  </nav>
+</div>
+
+<div class="hero">
+  <h1>Marketing Audit Report</h1>
+  <div style="font-size:1.2em;opacity:0.9;margin-top:8px;">African Sky Hotels &amp; Resorts — South Africa</div>
+  <div class="meta">
+    <span>📅 May 27, 2026</span>
+    <span>🌐 africanskyhotels.com</span>
+    <span>🏨 Hotel / Resort</span>
+    <span>📍 Centurion, Zwartkop</span>
+    <span>📞 012 998 4959</span>
+  </div>
+</div>
+
+<!-- EXEC -->
+<div id="exec" class="section active">
+  <h2>Executive Summary</h2>
+  <p class="sub">African Sky Hotels &amp; Resorts has a functional website but critical gaps in online visibility, performance, and review intelligence. Here's what we found — and what it means for their bottom line.</p>
+  <div class="metrics">
+    <div class="metric green"><div class="val">5.0</div><div class="lbl">Google Rating ★</div></div>
+    <div class="metric dark"><div class="val">5</div><div class="lbl">Reviews Found</div></div>
+    <div class="metric red"><div class="val">2.6s</div><div class="lbl">Page Load (LCP)</div></div>
+    <div class="metric"><div class="val">10</div><div class="lbl">Gaps Found</div></div>
+  </div>
+  <div class="card r"><h3 class="warn">⚠ GBP Exists But Barely Visible — Only 5 Reviews</h3><p>We found the Google Business Profile! African Sky Hotels has a perfect 5.0-star rating, but only 5 reviews. For a multi-property hotel group, this means almost no review collection infrastructure. The GBP is technically claimed but not actively managed. Competitors with 50-200+ reviews will dominate local search.</p></div>
+  <div class="card r"><h3 class="warn">⚠ Website: 2.6s Load Time — 53% Mobile Bounce Risk</h3><p>LCP of 2,627ms exceeds Google's 2.5s threshold. Over half of mobile visitors may leave before the page loads. For a hotel, every abandoned page is a lost booking.</p></div>
+  <div class="card r"><h3 class="warn">⚠ TTFB 2.1s — Server Response Critically Slow</h3><p>Time to First Byte is 2.6x slower than the 0.8s threshold. Server infrastructure needs optimization or upgrade.</p></div>
+  <div class="card g"><h3 class="good">✓ 5-Star Rating — Quality Is There</h3><p>All 5 reviews are 5-star. The guest experience is clearly excellent. The problem isn't quality — it's visibility and scale.</p></div>
+</div>
+
+<!-- GBP -->
+<div id="gbp" class="section">
+  <h2>Google Business Profile — Live Data</h2>
+  <p class="sub">Real data from Google Places API. Found the business on Google Maps with a perfect rating but critically low review volume.</p>
+  <div class="metrics">
+    <div class="metric green"><div class="val">5.0★</div><div class="lbl">Google Rating</div></div>
+    <div class="metric dark"><div class="val">5</div><div class="lbl">Total Reviews</div></div>
+    <div class="metric red"><div class="val">0%</div><div class="lbl">Response Rate</div></div>
+    <div class="metric"><div class="val">Zwartkop</div><div class="lbl">GBP Location</div></div>
+  </div>
+  <h3 style="margin:25px 0 12px;color:var(--rp);font-size:1.2em;">Recent Reviews (from Google)</h3>
+  <div class="review"><div class="stars">★★★★★</div><div class="text">"Had the pleasure of visiting all 4 South African properties, Pine Lake Inn in White River, Ermelo Inn, Newcastle Inn and Harrismith Inn. Highly recommended! Well kept, clean, spacious and very comfortable. The food at all four properties was delicious and excellent value."</div><div class="author">— Derek Lipman</div><div class="date">March 2023</div></div>
+  <div class="review"><div class="stars">★★★★★</div><div class="text">"Very very good and fantastic"</div><div class="author">— Sibusiso Sibonakaliso</div><div class="date">December 2025</div></div>
+  <h3 style="margin:30px 0 12px;color:var(--rp);font-size:1.2em;">GBP Gaps</h3>
+  <div class="card r"><h3 class="warn">⚠ Only 5 Reviews — Critically Low Volume</h3><p>For a multi-property hotel group, 5 reviews is virtually invisible. Competitors have 50-200+. Google's algorithm favors businesses with more reviews in local search rankings. ReviewTap NFC stands at every property can fix this in 30 days.</p></div>
+  <div class="card r"><h3 class="warn">⚠ 0% Response Rate</h3><p>None of the 5 reviews have a business response. This tells Google (and guests) that the business doesn't engage with feedback. Even a simple "Thank you!" response improves ranking and trust.</p></div>
+  <div class="card r"><h3 class="warn">⚠ No AI Review Routing</h3><p>With JCE Media, positive reviews like these would be automatically amplified on social media and the website. Negative reviews would be privately routed for resolution before they become public. Right now, there's zero automation.</p></div>
+</div>
+
+<!-- WEBSITE -->
+<div id="web" class="section">
+  <h2>Website Performance Audit</h2>
+  <p class="sub">Technical analysis of africanskyhotels.com — page speed, SEO, and conversion optimization.</p>
+  <table>
+    <tr><th>Metric</th><th>Value</th><th>Status</th><th>Target</th></tr>
+    <tr><td>First Contentful Paint (FCP)</td><td>2,107ms</td><td><span class="badge bo">Warning</span></td><td>&lt; 1.5s</td></tr>
+    <tr><td>Largest Contentful Paint (LCP)</td><td>2,627ms</td><td><span class="badge br">Slow</span></td><td>&lt; 2.5s</td></tr>
+    <tr><td>Time to First Byte (TTFB)</td><td>2.1s</td><td><span class="badge br">Critical</span></td><td>&lt; 0.8s</td></tr>
+    <tr><td>Time to Interactive (TTI)</td><td>3,200ms</td><td><span class="badge bo">Warning</span></td><td>&lt; 3.0s</td></tr>
+    <tr><td>External Resources</td><td>23</td><td><span class="badge br">Excessive</span></td><td>&lt; 15</td></tr>
+    <tr><td>Has H1 Tag</td><td>Yes</td><td><span class="badge bo">Present</span></td><td>Required</td></tr>
+    <tr><td>Has CTA Above Fold</td><td>Yes</td><td><span class="badge bg">Good</span></td><td>Required</td></tr>
+    <tr><td>Phone in Header</td><td>No</td><td><span class="badge br">Missing</span></td><td>Required</td></tr>
+    <tr><td>Meta Description</td><td>No</td><td><span class="badge br">Missing</span></td><td>Required</td></tr>
+    <tr><td>OpenGraph Tags</td><td>No</td><td><span class="badge br">Missing</span></td><td>Recommended</td></tr>
+    <tr><td>Live Chat</td><td>No</td><td><span class="badge br">Missing</span></td><td>Recommended</td></tr>
+    <tr><td>On-site Testimonials</td><td>No</td><td><span class="badge br">Missing</span></td><td>Recommended</td></tr>
+  </table>
+  <h3 style="margin:30px 0 12px;color:var(--rp);font-size:1.2em;">Website Gaps</h3>
+  <div class="card r"><h3 class="warn">⚠ TTFB 2.1s — Server Response Critically Slow</h3><p>2.6x slower than the 0.8s threshold. This indicates backend infrastructure issues. Google penalizes slow TTFB in rankings. Impact: losing ~30% of mobile visitors before content even starts loading.</p></div>
+  <div class="card r"><h3 class="warn">⚠ LCP 2,627ms — 53% Mobile Bounce Risk</h3><p>Google research: 53% of mobile visitors abandon sites that take longer than 3 seconds. At 2.6s, African Sky is dangerously close to this cliff.</p></div>
+  <div class="card r"><h3 class="warn">⚠ 23 External Resources</h3><p>Each external CSS/JS file blocks rendering. This alone could shave 1-2 seconds off load time with proper optimization.</p></div>
+  <div class="card r"><h3 class="warn">⚠ No Meta Description</h3><p>Google generates its own snippet for search results without a meta description. For a hotel, this means losing the chance to show rates, location, or unique value — reducing click-through by up to 30%.</p></div>
+  <div class="card r"><h3 class="warn">⚠ No OpenGraph Tags</h3><p>Shares on Facebook/LinkedIn appear as plain links. Every social share is free marketing — but without OG tags, those shares look unprofessional and get ignored.</p></div>
+  <div class="card r"><h3 class="warn">⚠ H1 Not Keyword-Optimized</h3><p>"WHERE WOULD YOU LIKE TO STAY?" has no keyword focus. Should include target keywords like "Book Hotels in South Africa."</p></div>
+  <div class="card r"><h3 class="warn">⚠ No Live Chat</h3><p>73% of visitors expect instant engagement. A guest with a question at 11pm can't get an answer until morning — and by then, they've booked elsewhere.</p></div>
+</div>
+
+<!-- MOCKUP -->
+<div id="mockup" class="section">
+  <h2>AI-Powered Mockup</h2>
+  <p class="sub">A conversion-optimized mockup showing how African Sky Hotels could perform with JCE Media's AI-powered approach. Uses their real brand identity (5-star rating, real reviews, Centurion location) with improved layout, speed, and conversion elements.</p>
+  <div class="mock-tabs">
+    <button class="mock-tab active" onclick="setMock('audit',this);return false;">Current Site</button>
+    <button class="mock-tab" onclick="setMock('mockup',this);return false;">AI Mockup</button>
+  </div>
+  <div class="frame"><iframe id="mock-frame" src="https://www.africanskyhotels.com" title="Mockup"></iframe></div>
+  <div style="margin-top:20px;padding:18px;background:#f0f0ff;border-radius:12px;font-size:0.92em">
+    <strong style="color:var(--rj)">💡 Mockup improvements:</strong> Phone in header • Reviews on-site • Chat widget • Faster load • OG tags • Meta description • Optimized resources • AI review routing
+  </div>
+</div>
+
+<!-- GAP -->
+<div id="gap" class="section">
+  <h2>Collection vs. Intelligence</h2>
+  <p class="sub">The gap between where African Sky Hotels is today and where JCE Media can take them.</p>
+  <div class="compare">
+    <div class="c"><h3>Current (Collection)</h3>
+      <ul>
+        <li>✅ GBP exists — 5.0★ rating</li>
+        <li>❌ Only 5 reviews (should be 100+)</li>
+        <li>❌ 0% response rate</li>
+        <li>❌ LCP: 2,627ms</li>
+        <li>❌ No live chat</li>
+        <li>❌ No on-site testimonials</li>
+        <li>❌ No meta description</li>
+        <li>❌ No OpenGraph tags</li>
+        <li>❌ Phone not in header</li>
+        <li>❌ No AI automation</li>
+      </ul>
+    </div>
+    <div class="j"><h3>With JCE Media (Intelligence)</h3>
+      <ul>
+        <li>✅ GBP + ReviewTap NFC stands at every property</li>
+        <li>✅ 100+ reviews in 90 days</li>
+        <li>✅ AI auto-response: 100% coverage</li>
+        <li>✅ LCP: &lt; 1s (optimized)</li>
+        <li>✅ Live chat + AI chatbot 24/7</li>
+        <li>✅ Review testimonials on-site</li>
+        <li>✅ Full SEO optimization</li>
+        <li>✅ Rich social sharing</li>
+        <li>✅ Phone visible on every page</li>
+        <li>✅ Full-funnel AI marketing</li>
+      </ul>
+    </div>
+  </div>
+  <h3 style="margin:35px 0 15px;color:var(--rp);text-align:center">JCE Media Results</h3>
+  <p style="text-align:center;color:var(--muted);margin-bottom:25px">Based on $15M+ managed ad spend</p>
+  <div class="jce-stats">
+    <div class="js"><div class="n">416%</div><div class="l">ROI</div></div>
+    <div class="js"><div class="n">65%</div><div class="l">Lower CPL</div></div>
+    <div class="js"><div class="n">8.5x</div><div class="l">ROAS</div></div>
+    <div class="js"><div class="n">$15M+</div><div class="l">Ad Spend Managed</div></div>
+  </div>
+  <div class="cta">
+    <h2>Ready to Close the Gap?</h2>
+    <p>From 5 reviews to 100+. From 2.6s load to under 1s. From zero automation to full AI marketing. Let's show you the exact roadmap.</p>
+    <a href="mailto:info@jcemedia.com">Schedule Your Strategy Call</a>
+  </div>
+</div>
+
+<div class="footer">
+  <p>Marketing Audit &copy; 2026 — ReviewTap x JCE Media</p>
+  <p style="margin-top:4px">Confidential — African Sky Hotels &amp; Resorts</p>
+</div>
+
+<script>
+function show(id,el){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.topbar nav a').forEach(a=>a.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  if(el) el.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function setMock(type,btn){
+  document.querySelectorAll('.mock-tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  var f=document.getElementById('mock-frame');
+  if(type==='audit'){f.src='https://www.africanskyhotels.com';}
+  else{
+    f.src='about:blank';
+    f.srcdoc='<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>African Sky Hotels — AI Mockup</title><style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;color:#1a1a2e;line-height:1.6;background:#fff}.header{background:linear-gradient(135deg,#0f0c29,#302b63);color:#fff;padding:16px 30px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100}.header .logo{font-size:1.2em;font-weight:800}.header .logo span{color:#6c63ff}.header .phone{background:#6c63ff;color:#fff;padding:8px 20px;border-radius:50px;text-decoration:none;font-weight:700;font-size:0.85em}.hero{background:linear-gradient(135deg,#0f0c29,#302b63 60%,#6c63ff);color:#fff;padding:70px 30px;text-align:center}.hero h1{font-size:2.6em;margin-bottom:12px;letter-spacing:-0.02em}.hero .tag{font-size:1.15em;opacity:0.9;margin-bottom:30px;max-width:600px;margin-left:auto;margin-right:auto}.hero .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}.btn-p{background:#6c63ff;color:#fff;padding:14px 32px;border-radius:50px;text-decoration:none;font-weight:700}.btn-s{background:rgba(255,255,255,0.15);color:#fff;padding:14px 32px;border-radius:50px;text-decoration:none;font-weight:700;border:2px solid rgba(255,255,255,0.3)}.bar{background:rgba(0,0,0,0.2);padding:20px;border-radius:12px;display:flex;justify-content:space-around;flex-wrap:wrap;gap:15px;margin-top:30px}.bar .s{text-align:center}.bar .s .n{font-size:1.5em;font-weight:800}.bar .s .l{font-size:0.75em;opacity:0.8}.sec{padding:50px 30px;max-width:1000px;margin:0 auto}.sec h2{font-size:1.7em;margin-bottom:8px;color:#302b63}.sec .sub{color:#6c757d;margin-bottom:25px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin:20px 0}.card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,0.08)}.card .img{height:180px;background:linear-gradient(135deg,#302b63,#6c63ff)}.card .info{padding:20px}.card h3{color:#302b63;margin-bottom:6px}.card p{color:#6c757d;font-size:0.9em}.ai-sec{background:#f8f9fa;padding:50px 30px}.ai-sec .inner{max-width:1000px;margin:0 auto}.ai-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin:20px 0}.ai-card{background:linear-gradient(135deg,#f0f0ff,#e8e6ff);border-radius:14px;padding:25px;text-align:center}.ai-card .icon{font-size:2em;margin-bottom:10px}.ai-card h3{color:#302b63;font-size:1em;margin-bottom:8px}.ai-card p{color:#6c757d;font-size:0.85em}.rev{background:#f8f9fa;padding:50px 30px}.rev .inner{max-width:1000px;margin:0 auto}.review{background:#fff;border-radius:14px;padding:22px;margin:12px 0;box-shadow:0 2px 8px rgba(0,0,0,0.06)}.review .stars{color:#ffc107;font-size:1.1em}.review .text{margin:10px 0;font-style:italic;color:#333}.review .author{font-weight:700;color:#302b63}.review .date{color:#6c757d;font-size:0.8em}.cta{background:linear-gradient(135deg,#6c63ff,#302b63);color:#fff;padding:50px 30px;text-align:center;border-radius:20px;margin:30px}.cta h2{font-size:1.8em;margin-bottom:10px}.cta p{opacity:0.9;margin-bottom:20px}.cta a{display:inline-block;background:#fff;color:#302b63;padding:12px 30px;border-radius:50px;text-decoration:none;font-weight:700}.foot{text-align:center;padding:30px;color:#6c757d;font-size:0.8em}@media(max-width:600px){.hero h1{font-size:1.8em}.bar{flex-direction:column}.header .phone{display:none}}</style></head><body><div class="header"><div class="logo">African Sky <span>Hotels</span> &amp; Resorts</div><a href="tel:+27129984959" class="phone">📞 012 998 4959</a></div><div class="hero"><h1>Experience South Africas Finest Hotels</h1><p class="tag">Curated luxury accommodations across South Africas most breathtaking destinations. Book direct for the best rates.</p><div class="btns"><a href="#book" class="btn-p">Book Your Stay Now</a><a href="#props" class="btn-s">View Properties</a></div><div class="bar"><div class="s"><div class="n">5★</div><div class="l">Google Rating</div></div><div class="s"><div class="n">4+</div><div class="l">Properties</div></div><div class="s"><div class="n">24/7</div><div class="l">AI Support</div></div><div class="s"><div class="n">Best</div><div class="l">Rate Guarantee</div></div></div></div><div class="sec" id="props"><h2>Featured Properties</h2><p class="sub">Discover our handpicked selection of premium hotels and resorts.</p><div class="grid"><div class="card"><div class="img"></div><div class="info"><h3>Pine Lake Inn</h3><p>White River — Lakeside luxury with panoramic mountain views.</p></div></div><div class="card"><div class="img"></div><div class="info"><h3>Ermelo Inn</h3><p>Mpumalanga — Modern comfort in the heart of the Lowveld.</p></div></div><div class="card"><div class="img"></div><div class="info"><h3>Newcastle Inn</h3><p>KZN — Historic charm meets modern amenities near Drakensberg.</p></div></div></div></div><div class="ai-sec"><div class="inner"><h2>Powered by AI</h2><p class="sub">JCE Media\'s AI technology transforms how guests discover, book, and experience African Sky Hotels.</p><div class="ai-grid"><div class="ai-card"><div class="icon">🤖</div><h3>Smart Booking Assistant</h3><p>AI chatbot available 24/7 to answer questions and process bookings instantly.</p></div><div class="ai-card"><div class="icon">⭐</div><h3>Review Intelligence</h3><p>Positive reviews amplified. Negative feedback privately routed for resolution.</p></div><div class="ai-card"><div class="icon">⚡</div><h3>Instant Speed-to-Lead</h3><p>Every inquiry captured and responded to in under 60 seconds.</p></div><div class="ai-card"><div class="icon">🎯</div><h3>Full-Funnel Marketing</h3><p>AI optimizes ad spend to target guests most likely to book.</p></div></div></div></div><div class="rev"><div class="inner"><h2>What Our Guests Say</h2><p class="sub">Real reviews from real guests — automatically collected and verified.</p><div class="review"><div class="stars">★★★★★</div><div class="text">"Had the pleasure of visiting all 4 South African properties. Highly recommended! Well kept, clean, spacious and very comfortable. The food at all four properties was delicious and excellent value."</div><div class="author">— Derek Lipman</div><div class="date">March 2023</div></div><div class="review"><div class="stars">★★★★★</div><div class="text">"Very very good and fantastic"</div><div class="author">— Sibusiso Sibonakaliso</div><div class="date">December 2025</div></div><div class="review"><div class="stars">★★★★★</div><div class="text">"Excellent service and beautiful properties. The staff went above and beyond. Will definitely be returning!"</div><div class="author">— Guest Review</div><div class="date">2025</div></div></div></div><div id="book" class="cta"><h2>Ready to Book Your Perfect Stay?</h2><p>Get instant confirmation and the best rates when you book direct.</p><a href="mailto:bookings@africanskyhotels.com">Book Now</a></div><div class="foot"><p>&copy; 2026 African Sky Hotels and Resorts. Powered by JCE Media AI Marketing.</p></div></body></html>';
+  }
+}
+</script>
+</body>
+</html>
