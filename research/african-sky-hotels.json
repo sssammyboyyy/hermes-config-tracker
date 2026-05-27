@@ -1,0 +1,133 @@
+{
+  "properties": [
+    {
+      "name": "Pine Lake Inn",
+      "location": "White River, Mpumalanga",
+      "rating": 4.2,
+      "reviews": 603,
+      "address": "Main Hazyview Road, White River",
+      "phone": "+27 13 751 5036",
+      "email": "pinelake@africanskyhotels.com",
+      "review_highlights": [
+        "spacious, clean and comfortable",
+        "lake view was the best highlight"
+      ],
+      "image": "assets/DALF6718-HDR.jpg"
+    },
+    {
+      "name": "Ermelo Inn",
+      "location": "Ermelo, Mpumalanga",
+      "rating": 3.6,
+      "reviews": 811,
+      "address": "Corner of Kerk and Fourie St, Ermelo",
+      "phone": "+27 17 811 2315",
+      "email": "ermelo@africanskyhotels.com",
+      "review_highlights": [
+        "best hotel ever...staff always friendly",
+        "horrible in terms of customer service"
+      ],
+      "image": "assets/DALF7733-HDR.jpg"
+    },
+    {
+      "name": "Newcastle Inn",
+      "location": "Newcastle, KwaZulu-Natal",
+      "rating": 4.0,
+      "reviews": 786,
+      "phone": "+27 34 312 8151",
+      "email": "newcastle@africanskyhotels.com",
+      "review_highlights": [
+        "good and professional service",
+        "rooms are neat and clean daily"
+      ],
+      "image": "assets/CPLF3162-2-HDR.jpg"
+    },
+    {
+      "name": "Harrismith Inn",
+      "location": "Harrismith, Free State",
+      "rating": 4.1,
+      "reviews": 532,
+      "phone": "+27 58 622 1011",
+      "email": "harrismith@africanskyhotels.com",
+      "review_highlights": [
+        "great service and spotless rooms",
+        "bathrooms exceptionally clean"
+      ],
+      "image": "assets/DALF5223-HDR.jpg"
+    },
+    {
+      "name": "African Sky Hotel Werlte",
+      "location": "Werlte, Emsland, Germany",
+      "rating": 4.5,
+      "reviews": 292,
+      "phone": "+49 5951 987 760",
+      "email": "info@africanskyhotel.de",
+      "review_highlights": [
+        "unexpectedly amazing hotel in a small town",
+        "African style design is outstanding",
+        "never expected to find such a hotel in Werlte"
+      ],
+      "image": "assets/Werlte-Hotel29.jpg"
+    }
+  ],
+  "competitors": [
+    {
+      "name": "ANEW Resort White River",
+      "rating": 4.1,
+      "reviews": 1875
+    },
+    {
+      "name": "Premier Hotel The Winkler",
+      "rating": 4.2,
+      "reviews": 718
+    },
+    {
+      "name": "ANEW Resort Vulintaba Newcastle",
+      "rating": 4.2,
+      "reviews": 1282
+    },
+    {
+      "name": "Tramonto Boutique Hotel",
+      "rating": 4.5,
+      "reviews": 976
+    },
+    {
+      "name": "Blackrock Hotel",
+      "rating": 4.2,
+      "reviews": 1003
+    },
+    {
+      "name": "Hotel 247 @ White River",
+      "rating": 4.1,
+      "reviews": 403
+    }
+  ],
+  "brand": {
+    "tagline": "WHERE WOULD YOU LIKE TO STAY?",
+    "tagline2": "a true South African vacation",
+    "services": [
+      "African resorts",
+      "quality accommodation",
+      "conference facilities"
+    ],
+    "colors": {
+      "navy": "#2e3365",
+      "teal": "#31cdcf",
+      "orange": "#ff6900",
+      "red": "#cb3524"
+    },
+    "fonts": [
+      "Montserrat",
+      "Open Sans"
+    ],
+    "logo": "assets/logo.png"
+  },
+  "_meta": {
+    "client": "African Sky Hotels and Resorts",
+    "url": "https://www.africanskyhotels.com",
+    "audited_at": "2026-05-27",
+    "total_properties": 5,
+    "total_reviews": 3024,
+    "gbp_source": "places-api",
+    "competitor_source": "places-api"
+  }
+}
