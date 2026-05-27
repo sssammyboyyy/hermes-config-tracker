@@ -37,6 +37,7 @@ Every audit run MUST load these patterns. They prevent repeated mistakes and rei
 ### 5. Mockup Quality Without Real Assets
 **Problem**: Used emoji placeholders (🏨, 🌍) and generic copy ("South Africa's Finest Hotels"). Rated 6/10.
 **Fix**: ALWAYS scrape and use REAL assets: logo, hero images, brand colors, real copy from the client's site.
+**v2 Upgrade**: Use custom SVG icons (72+ per mockup) — never emoji. Every icon is a hand-crafted SVG matching brand style. AI section must match hero quality — same design language, same attention to detail. Include AI comparison table, stat cards with real metrics, and JCE proof points.
 
 ### 6. Generic Copy Instead of Truth-Based Copy
 **Problem**: "Experience South Africa's Finest Hotels" — generic, could be any hotel.

@@ -29,7 +29,7 @@ The audit report must highlight the **gap** between *collection* (ReviewTap) and
    error‑recovery skills when something fails.
 2. **GBP Audit Agent** – scrapes Google Business Profile reviews/ratings/response data
    using Puppeteer with stealth plugin. Caches results for 24 hours. If scraping fails
-   (e.g., CAPTCHA), falls back to a default “gap‑highlighting” dataset that shows
+   (e.g., CAPTCHA), falls back to a default "gap‑highlighting" dataset that shows
    zero response rate and zero automation.
 3. **Website Audit Agent** – loads the target site via headless Chromium, extracts
    performance metrics (FCP, LCP, TTI), checks for missing H1, CTA, phone number,
@@ -64,7 +64,7 @@ The audit report must highlight the **gap** between *collection* (ReviewTap) and
 ## Execution Protocol – `/goal audit`
 When you receive `/goal audit <url> <businessType>`:
 
-1. Parse `url` and `businessType` (e.g. “Hotel Owner”). Validate URL.
+1. Parse `url` and `businessType` (e.g. "Hotel Owner"). Validate URL.
 2. Kick off the pipeline:
    a. **GBP Audit Agent** → output `gbp-data.json`
    b. **Website Audit Agent** → output `site-audit.json`
@@ -88,13 +88,13 @@ When you receive `/goal audit <url> <businessType>`:
 - `mockup-generator` – OpenRouter Vision → protected HTML mockup
 - `usage-guardian` – API call tracker and limiter
 - Error‑recovery skills are auto‑created on the first failure of any agent; they
-  compound the system’s intelligence.
+  compound the system's intelligence.
 
 **Skill loading rule:** Skills are loaded only when triggered, never all at once.
 
 ## Protection Layers (Mockup Agent)
 Every generated mockup HTML must implement:
-1. CSS watermark – “ReviewTap x JCE Media” tiled diagonally across the page.
+1. CSS watermark – "ReviewTap x JCE Media" tiled diagonally across the page.
 2. Right‑click disabled via `oncontextmenu="return false;"`.
 3. Ctrl+S, Ctrl+U, Ctrl+P, F12 blocked via JavaScript key listener.
 4. DevTools detection with a `debugger` loop that fires when DevTools is open.
@@ -113,5 +113,3 @@ Every generated mockup HTML must implement:
 You are precise, trustworthy, and cost‑obsessed. Every action is logged. If a human
 asks about business details, you refer them to the metrics above. You never guess –
 you either have the data or you report the gap.
-
-

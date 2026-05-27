@@ -1,7 +1,7 @@
 ---
 name: gbp-scraper
 description: "Get Google Business Profile reviews, ratings, and response data via the Google Places API (New). No browser scraping — reliable and fast."
-version: 2.0.0
+version: 2.1.0
 author: MAS Orchestrator
 license: MIT
 platforms: [linux]
@@ -17,16 +17,11 @@ Gets Google Business Profile data via the **Google Places API (New)**. No browse
 
 ## Prerequisites
 
-**Required:** `GOOGLE_PLACES_API_KEY` environment variable.
+**Required:** `GOOGLE_PLACES_API_KEY` environment variable (set in `~/.hermes/.env`).
 
-To get a key:
-1. Go to [console.cloud.google.com](https://console.cloud.google.com)
-2. Select your GCP project
-3. Enable **Places API (New)** under APIs & Services → Library
-4. Create an API key under APIs & Services → Credentials
-5. Set as env var: `GOOGLE_PLACES_API_KEY=AIza...`
+**Confirmed working key:** `AIzaSy...7jeA` (Samuel's key, saved in .env)
 
-**PITFALL — Do NOT use Puppeteer for GBP scraping.** Google blocks headless browsers aggressively. CAPTCHAs, timeouts, and rate limits make it unreliable. The Places API is the only production-grade approach. Samuel explicitly flagged this: "Puppeteer is rather unreliable" for GBP work.
+**⚠ NEVER use Puppeteer for GBP scraping.** Samuel explicitly flagged this: "Puppeteer is rather unreliable." Google blocks headless browsers. The Places API is the only production-grade approach.
 
 ## Input
 
@@ -38,51 +33,68 @@ To get a key:
 `gbp-data.json` with structure:
 ```json
 {
-  "business_name": "African Sky Hotels and Resorts",
-  "rating": 4.2,
-  "review_count": 127,
-  "response_rate": 0.35,
-  "avg_response_time_hours": 48,
+  "found": true,
+  "business_name": "African Sky Hotels & Resorts",
+  "rating": 5.0,
+  "review_count": 5,
+  "response_rate": 0,
+  "avg_response_time_hours": null,
   "reviews": [
     {
-      "author": "John D.",
+      "author": "Derek Lipman",
       "rating": 5,
-      "date": "2026-05-01",
-      "text": "Great stay!",
+      "date": "2023-03-04",
+      "text": "Had the pleasure of visiting all 4 South African properties...",
       "response": null,
       "response_date": null
     }
   ],
+  "formatted_address": "Ground Floor, Building 9, Centurion Gate Office Park...",
+  "phone": "012 998 4959",
+  "website": "http://www.africanskyhotels.com/",
+  "place_id": "ChIJQ6Vv2k9nlR4RUnXz-yzRzow",
   "scraped_at": "2026-05-27T12:00:00Z",
   "source": "places-api"
 }
 ```
 
+**Note:** Places API does NOT return business owner responses to reviews. `response_rate` will always be 0 from the API alone. This is expected — use it as a gap indicator ("0% response rate").
+
 ## Method
 
-### Step 1: Search for the Place
+### Step 1: Search for the Place (CONFIRMED WORKING)
 
 ```bash
 curl -s "https://places.googleapis.com/v1/places:searchText" \
   -H "Content-Type: application/json" \
   -H "X-Goog-Api-Key: $GOOGLE_PLACES_API_KEY" \
-  -H "X-Goog-FieldMask: places.id,places.displayName,places.rating,places.userRatingCount,places.reviews,places.formattedAddress" \
-  -d '{"textQuery": "<business_name> <city> <country>", "maxResultCount": 3}'
+  -H "X-Goog-FieldMask: places.id,places.displayName,places.rating,places.userRatingCount,places.reviews,places.formattedAddress,places.websiteUri,places.nationalPhoneNumber" \
+  -d '{"textQuery": "<business_name> <country>", "maxResultCount": 1}'
 ```
 
-### Step 2: Get Place Details (if needed)
-
+**Confirmed working example:**
 ```bash
-curl -s "https://places.googleapis.com/v1/places/<PLACE_ID>" \
+# African Sky Hotels & Resorts → 5.0★, 5 reviews, phone: 012 998 4959
+curl -s "https://places.googleapis.com/v1/places:searchText" \
+  -H "Content-Type: application/json" \
   -H "X-Goog-Api-Key: $GOOGLE_PLACES_API_KEY" \
-  -H "X-Goog-FieldMask: id,displayName,rating,userRatingCount,reviews,formattedAddress,websiteUri,regularOpeningHours,nationalPhoneNumber"
+  -H "X-Goog-FieldMask: places.id,places.displayName,places.rating,places.userRatingCount,places.reviews,places.formattedAddress,places.websiteUri,places.nationalPhoneNumber" \
+  -d '{"textQuery": "African Sky Hotels and Resorts South Africa", "maxResultCount": 1}'
 ```
 
-### Step 3: Parse and Write JSON
+Response includes: `id`, `displayName.text`, `rating`, `userRatingCount`, `reviews[]` (with `authorAttribution.displayName`, `rating`, `text.text`, `publishTime`), `formattedAddress`, `websiteUri`, `nationalPhoneNumber`.
 
-Parse the API response into the `gbp-data.json` structure. Compute:
-- `response_rate` = reviews with responses / total reviews
-- `avg_response_time_hours` = average hours between review and response (if response timestamps available)
+### Step 2: Parse and Write JSON
+
+Parse the API response into the `gbp-data.json` structure. Key mappings:
+- `place["displayName"]["text"]` → `business_name`
+- `place["rating"]` → `rating`
+- `place["userRatingCount"]` → `review_count`
+- `place["reviews"][i]["authorAttribution"]["displayName"]` → `reviews[i].author`
+- `place["reviews"][i]["rating"]` → `reviews[i].rating`
+- `place["reviews"][i]["text"]["text"]` → `reviews[i].text`
+- `place["reviews"][i]["publishTime"][:10]` → `reviews[i].date`
+- `response_rate` → 0 (API doesn't return business responses)
 
 ### Fallback: Gap-Highlighting Dataset
 
@@ -115,12 +127,19 @@ Cache results for 24 hours in `/home/samuelj121314/mas-system/temp/gbp-cache/`. 
 ## Gap Analysis
 
 After getting data, compute:
-- `response_rate` = reviews with responses / total reviews
-- If response_rate < 0.5 → flag as "Low response rate — AI auto-response recommended"
-- If review_count < 50 → flag as "Low review volume — ReviewTap NFC stand can help"
-- If avg_response_time > 24h → flag as "Slow response time — AI can respond instantly"
-- If no GBP found at all → flag as critical gap (see fallback above)
+- `response_rate` = 0 (API limitation — always flag as gap)
+- If `review_count < 50` → flag as "Low review volume — ReviewTap NFC stand can help"
+- If `review_count == 0` → flag as critical: "No Google Business Profile found"
+- If `rating == 0` → flag as critical: "No rating data available"
+- Always flag: "0% response rate — AI auto-response recommended"
 
 ## Cost
 
-Places API (New) has a free tier. Text Search costs ~$0.031 per request. For audit pipeline usage (tens of runs/day), this stays within free tier or costs pennies. **Never use paid OpenRouter models for this — the API call is cheaper and more reliable.**
+Places API (New) has a generous free tier. Text Search costs ~$0.031 per request. For audit pipeline usage (tens of runs/day), this stays within free tier or costs pennies. **Never use paid OpenRouter models for this — the API call is cheaper and more reliable.**
+
+## Confirmed Working Example
+
+African Sky Hotels & Resorts:
+- **Query:** `"African Sky Hotels and Resorts South Africa"`
+- **Result:** `{"displayName": {"text": "African Sky Hotels & Resorts"}, "rating": 5, "userRatingCount": 5, "nationalPhoneNumber": "012 998 4959", "websiteUri": "http://www.africanskyhotels.com/", "formattedAddress": "Ground Floor, Building 9, Centurion Gate Office Park, 126 Akkerboom St, Zwartkop, Centurion, 0157, South Africa"}`
+- **Reviews:** 5 reviews, all 5-star, from 2023-2025

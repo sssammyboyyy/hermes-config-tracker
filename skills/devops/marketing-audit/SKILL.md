@@ -1,122 +1,129 @@
 ---
 name: marketing-audit
-description: "Orchestrate the full MAS marketing audit pipeline — coordinates GBP scraping, website audit, mockup generation, and report assembly into a single protected HTML report."
-version: 1.1.0
+description: "Orchestrate the full MAS marketing audit pipeline — brand asset extraction, GBP scraping, website audit, mockup generation with real assets, report assembly, deployment, and quality evaluation."
+version: 1.4.0
 author: MAS Orchestrator
 license: MIT
 platforms: [linux]
 metadata:
   hermes:
     tags: [mas, marketing-audit, orchestration, pipeline, reviewtap, jce-media]
-    related_skills: [gbp-scraper, website-auditor, mockup-generator, usage-guardian]
+    related_skills: [gbp-scraper, website-auditor, mockup-generator, quality-judge, usage-guardian]
 ---
 
-# Marketing Audit — Pipeline Orchestrator
+# Marketing Audit — Pipeline Orchestrator v1.4
 
-This is the top-level skill for the MAS (Marketing Audit & Strategy) pipeline. It coordinates all sub-agents to produce a single, protected HTML audit report.
+Coordinates all sub-agents to produce a single, protected HTML audit report with a separate AI-powered mockup page. Both use REAL brand assets extracted from the client's site.
 
 ## Trigger
 
-Activated when the user sends: `/goal audit <url> <businessType>`
+`/goal audit <url> <businessType>`
+
+## Execution Philosophy
+
+**"Build first, prompt second."** Work around blocks, build what you can, ask only for what you truly cannot get.
+
+**Every action must move the project forward.** If one approach fails, switch approach — don't stop.
 
 ## Pipeline Stages
 
 ```
 Input: url + businessType
   │
-  ├─ Stage 1: GBP Audit Agent → gbp-data.json
-  ├─ Stage 2: Website Audit Agent → site-audit.json
-  ├─ Stage 3: Mockup Generation Agent → protected-mockup.html
-  ├─ Stage 4: Report Assembly Agent → audit-<timestamp>.html
+  ├─ Stage 0: Brand Asset Extraction (curl → logo, hero images, colors, fonts)
+  │            Upload to GitHub Pages /assets/ → verify 200 OK
+  ├─ Stage 1: GBP Audit → gbp-data.json (Google Places API via curl)
+  ├─ Stage 2: Website Audit → site-audit.json (curl, NO browser)
+  ├─ Stage 3: Mockup Generation → mockup.html (SEPARATE file, real brand assets)
+  ├─ Stage 4: Report Assembly → index.html (consolidated, tabbed, iframe → mockup.html)
+  ├─ Stage 5: Deploy ALL to GitHub Pages (index.html + mockup.html + assets/)
+  ├─ Stage 6: Quality Judge evaluation (quality-checklist.md — all must pass)
   │
-  └─ Output: path to final HTML report + gap summary
+  └─ Output: live URL + quality score + gap summary
 ```
 
-## Execution Pattern
+## Stage Details
 
-Stages run sequentially. Each stage writes its output to `/home/samuelj121314/mas-system/temp/`. A stage that fails does NOT abort the pipeline — use its fallback data and continue.
+### Stage 0: Brand Asset Extraction (NEW in v1.4)
 
-**PITFALL — Browser timeouts on heavy sites:** `browser_navigate` can timeout (60s default) on JS-heavy or slow sites. When this happens, do NOT retry the browser. Instead, use `curl` + `terminal()` to collect performance data. This fallback collected all needed data for africanskyhotels.com in under 5 seconds. See `website-auditor` skill for the full curl-based extraction method.
+**Read `mockup-generator` skill → `references/brand-asset-extraction.md`**
 
-### After All Stages: Report Assembly
+1. Fetch homepage HTML via curl
+2. Extract: logo URL, hero image URLs, brand colors (from CSS), font families
+3. Download all assets to `/tmp/site_assets/`
+4. Upload to GitHub Pages `/assets/` directory
+5. Wait 5 seconds, verify HTTP 200 on all assets
+6. Rewrite all URLs in mockup HTML to point to `https://USER.github.io/REPO/assets/`
 
-Use `execute_code` (Python) to:
-1. Read all JSON outputs from `/home/samuelj121314/mas-system/temp/`
-2. Read the template from `/home/samuelj121314/mas-system/report-template.html`
-3. Replace `{{PLACEHOLDER}}` tokens with real data via Python `str.replace()`
-4. Write the filled HTML to `/home/samuelj121314/mas-output/audit-<ISO8601>.html`
+### Stage 1: GBP Audit
 
-See `references/report-assembly.py` for a complete worked example.
+Use `gbp-scraper` skill. Requires `GOOGLE_PLACES_API_KEY`. Returns real rating, reviews, phone, address.
 
-### 0. Validate Input
+### Stage 2: Website Audit
 
-```python
-from urllib.parse import urlparse
+Use `website-auditor` skill. Use curl, NOT browser. Browser hangs on JS-heavy sites.
 
-def validate_url(url):
-    parsed = urlparse(url if url.startswith('http') else f'https://{url}')
-    if not parsed.netloc:
-        raise ValueError(f"Invalid URL: {url}")
-    return f"https://{parsed.netloc}"
+### Stage 3: Mockup Generation
 
-VALID_TYPES = ["Hotel Owner", "Restaurant Owner", "Dentist", "Law Firm", "Real Estate", "Auto Dealer"]
+Use `mockup-generator` skill (v2.1). Key requirements:
+- **Separate `mockup.html` file** (never embed as base64 srcdoc in report)
+- Real logo, real images, exact brand colors, exact brand fonts
+- No emoji placeholders — ever
+- Mobile responsive, all 6 protection layers
 
-def validate_business_type(bt):
-    return bt if bt in VALID_TYPES else "Other"
+### Stage 4: Report Assembly
+
+Build consolidated HTML with tabbed nav. JS function: `show(id,el)` for tab switching. Mockup section uses `<iframe src="<url>/mockup.html">`.
+
+### Stage 5: Deployment
+
+```bash
+cp index.html mockup.html /tmp/gh-pages-deploy/
+cp -r assets /tmp/gh-pages-deploy/
+cd /tmp/gh-pages-deploy
+git add -A && git commit -m "Deploy vX" && git push origin gh-pages --force
+# Wait 3-5 seconds for GitHub Pages to propagate
+# Verify: curl -s -o /dev/null -w "%{http_code}" <url>
 ```
 
-### 1. GBP Audit Agent
+### Stage 6: Quality Judge
 
-Use `gbp-scraper` skill (v2 — Places API). Output: `gbp-data.json`.
+Run `quality-judge` checklist. All items must pass before considering the audit complete.
 
-**⚠ PITFALL — Do NOT use Puppeteer for GBP.** Samuel explicitly flagged this: "Puppeteer is rather unreliable." Google blocks headless browsers. Use the Google Places API via curl. Requires `GOOGLE_PLACES_API_KEY` env var. If the key is not set, the skill falls back to the gap-highlighting dataset — which is still a valid and compelling narrative.
+## Model Selection
 
-**Fallback if API returns no results (no GBP):**
+| Task | Model | Why |
+|------|-------|-----|
+| Orchestration | `openrouter/owl-alpha` | 1M context, agentic |
+| GBP API calls | curl (no LLM) | Direct API, $0 |
+| Website audit | curl (no LLM) | Direct HTTP, $0 |
+| Report assembly | Python execute_code | Template replacement |
+| **NEVER** | Any paid model | Free tier only |
 
-```json
-{
-  "found": false,
-  "business_name": "Unknown (scraping failed)",
-  "rating": 0,
-  "review_count": 0,
-  "response_rate": 0,
-  "avg_response_time_hours": null,
-  "reviews": [],
-  "gap": "No Google Business Profile data available — business is invisible to AI-powered review analysis"
-}
-```
+## Critical Pitfalls
 
-### 2. Website Audit Agent
+### PITFALL — Mockup must be a separate file
+Mockup = separate `mockup.html`, loaded via `iframe src="<url>/mockup.html"`.
+**NEVER embed as base64 srcdoc** — regex patch operations on the report corrupt large embedded content.
 
-Use `website-auditor` skill. Output: `site-audit.json`.
+### PITFALL — JS function name consistency
+Function name in definition must match name in ALL onclick handlers. No console error when this breaks — tabs just silently fail.
 
-**Fallback if browser times out:** Use curl-based extraction (see `website-auditor` PITFALL section). Collect TTFB, total load time, page size, HTTP status, grep for H1/title/meta/phone/CTA/schema/resource counts from raw HTML. This is faster than the browser and does not hang.
+### PITFALL — Puppeteer for GBP
+**NEVER.** Google blocks headless browsers. Use Places API.
 
-### 3. Mockup Generation Agent
+### PITFALL — No emoji placeholders
+If you can't extract real images, use a clean text-only design. Emoji = amateur.
 
-Use `mockup-generator` skill (v2). Output: `protected-mockup.html`.
+### PITFALL — GitHub Pages propagation delay
+After push, wait 3-5 seconds before verifying URLs. Assets may return 404 initially.
 
-**Key v2 improvement:** The mockup now extracts REAL brand assets (logo, hero images, product photos) from the target site via Puppeteer JS evaluation, downloads them locally, and includes them in the generated HTML mockup. This means prospects see their own brand imagery in the improved layout — much more persuasive than stock placeholders.
+### PITFALL — write_file truncation
+For files >20KB, verify output size. Use Python for large files.
 
-**Model selection (per openrouter-agents routing):**
-- Vision/mockup generation → `google/gemini-2.0-flash-001:free`
-- Escalate to `openrouter/owl-alpha` if output insufficient
-- **NEVER use paid models**
+## Deployment
 
-**Fallback if mockup generation fails:** Include a placeholder div in the report explaining the timeout and suggesting re-run with `--mockup`.
-
-### 4. Report Assembly Agent
-
-Use `execute_code` with Python. Merge all JSON data + mockup into the `{{PLACEHOLDER}}` template. Write to `/home/samuelj121314/mas-output/audit-<ISO8601>.html`.
-
-## Error Recovery
-
-For each stage:
-1. Attempt the stage
-2. If it fails, retry once automatically **with a changed approach** (e.g., browser → curl, not browser → browser)
-3. If retry fails, use fallback data and continue
-4. Never abort the entire pipeline for one failed stage
-5. On first encounter of a new failure class, create an error-recovery skill for it
+**GitHub Pages** (NOT Netlify — Netlify CLI OOMs on e2-micro during npm install).
 
 ## Key Metrics (hardcode in every report)
 
@@ -125,48 +132,10 @@ For each stage:
 - 8.5x ROAS
 - $15M+ managed ad spend
 
-## Gap Narrative
+## Version Notes
 
-The report must highlight the gap between:
-- **Collection** (ReviewTap NFC/QR stands) — what the business currently has
-- **Intelligence** (JCE Media AI automation) — what they're missing
-
-Gap indicators:
-- Low review response rate (< 50%) → needs AI auto-response
-- No review routing → needs smart positive/negative routing
-- Slow website LCP (> 2.5s) → losing leads before they convert
-- Missing CTA/phone on website → no conversion path
-- Zero automation → all reviews handled manually or ignored
-
-## Output Format
-
-Final response must contain:
-1. Full path to generated HTML report
-2. Time taken (target < 90 seconds)
-3. Summary of gaps found (as Telegram message to user)
-4. Key metrics comparison (current vs. with JCE Media)
-
-## Temp File Cleanup
-
-After report generation, clean up `/home/samuelj121314/mas-system/temp/` but keep the final HTML report.
-
-## Skill Library Hygiene
-
-Keep the skill library lean. After cleanup work or major sessions:
-- Delete unused skill categories from `~/.hermes/skills/` (keep only `devops/` for MAS work)
-- Delete Puppeteer cache (`~/.cache/puppeteer/`) if not needed immediately
-- Delete `node_modules/puppeteer` if Chromium cache was cleared
-- Force-push lean GitHub repos to remove history bloat
-
-See `hermes-config` skill references for detailed cleanup procedures.
-
-## Exponential Refinement Tracking
-
-Every audit run should contribute to compounding improvement. After each audit:
-
-1. **Log changes**: The `hermes-improvement-logger` cron job (daily) checks for recently modified `SKILL.md` files and appends summaries to `~/workspace/improvement-log.md`
-2. **Track skill versions**: When a skill is updated during an audit (error recovery, new technique), bump its version in the YAML frontmatter
-3. **Capture new patterns**: If a new fallback, workaround, or technique was discovered, update the relevant skill immediately — don't wait
-4. **Report improvements**: In the audit summary, include a line about any system improvements made during the run
-
-The improvement log at `~/workspace/improvement-log.md` serves as a growth diary — reviewing it shows the trajectory of system capability over time.
+v1.4: Added Stage 0 (brand asset extraction). Mockup uses real client assets. Added Stage 6 (quality judge). Reference to quality-checklist.md.
+v1.3: Consolidated HTML report pattern, JS pitfall docs, GitHub Pages deployment.
+v1.2: Places API integration, model routing table, build-first-prompt-second.
+v1.1: Initial consolidated report with tabbed navigation.
+v1.0: Basic pipeline.
