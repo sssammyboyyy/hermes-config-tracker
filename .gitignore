@@ -1,0 +1,22 @@
+# NEVER commit secrets
+.env
+auth.json
+*.key
+*.pem
+
+# Ignore large/sensitive DBs
+state.db
+state.db-*
+*.db
+
+# Ignore logs and caches
+logs/
+*.log
+cache/
+audio_cache/
+image_cache/
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db

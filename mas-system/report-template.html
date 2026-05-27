@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marketing Audit Report — {{BUSINESS_NAME}}</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: #1a1a2e; line-height: 1.6;
+  }
+  .watermark {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none; z-index: 99999;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent, transparent 40px,
+      rgba(0,0,0,0.02) 40px,
+      rgba(0,0,0,0.02) 80px
+    );
+  }
+  .overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 99990; opacity: 0;
+  }
+  .header {
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    color: white; padding: 60px 40px; text-align: center;
+  }
+  .header h1 { font-size: 2.4em; margin-bottom: 10px; }
+  .header .subtitle { font-size: 1.1em; opacity: 0.8; }
+  .header .date { margin-top: 20px; font-size: 0.9em; opacity: 0.6; }
+  .section { padding: 50px 40px; max-width: 1100px; margin: 0 auto; }
+  .section h2 {
+    font-size: 1.8em; margin-bottom: 25px;
+    color: #302b63; border-left: 4px solid #6c63ff; padding-left: 15px;
+  }
+  .section h3 { font-size: 1.2em; margin: 20px 0 10px; color: #444; }
+  .metrics-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px; margin: 30px 0;
+  }
+  .metric-card {
+    background: linear-gradient(135deg, #6c63ff, #302b63);
+    color: white; padding: 30px; border-radius: 12px; text-align: center;
+  }
+  .metric-card .value { font-size: 2.5em; font-weight: bold; }
+  .metric-card .label { font-size: 0.9em; opacity: 0.9; margin-top: 5px; }
+  .metric-card.dark { background: linear-gradient(135deg, #1a1a2e, #16213e); }
+  .gap-card {
+    background: #fff3f3; border-left: 4px solid #ff4757;
+    padding: 20px 25px; margin: 15px 0; border-radius: 0 8px 8px 0;
+  }
+  .gap-card h4 { color: #ff4757; margin-bottom: 8px; }
+  .fix-card {
+    background: #f0fff4; border-left: 4px solid #2ed573;
+    padding: 20px 25px; margin: 15px 0; border-radius: 0 8px 8px 0;
+  }
+  .fix-card h4 { color: #2ed573; margin-bottom: 8px; }
+  .perf-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+  .perf-table th { background: #f8f9fa; text-align: left; padding: 12px 15px; border-bottom: 2px solid #dee2e6; }
+  .perf-table td { padding: 10px 15px; border-bottom: 1px solid #eee; }
+  .status-warn { color: #ffa502; font-weight: bold; }
+  .status-bad { color: #ff4757; font-weight: bold; }
+  .status-good { color: #2ed573; font-weight: bold; }
+  .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 30px 0; }
+  .compare-current { background: #fff5f5; border-radius: 12px; padding: 30px; }
+  .compare-jce { background: #f0fff4; border-radius: 12px; padding: 30px; }
+  .compare-current h3 { color: #ff4757; }
+  .compare-jce h3 { color: #2ed573; }
+  .compare-grid ul { list-style: none; padding: 0; }
+  .compare-grid li { padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.05); }
+  .cta-section {
+    background: linear-gradient(135deg, #6c63ff, #302b63);
+    color: white; padding: 60px 40px; text-align: center;
+  }
+  .cta-section h2 { font-size: 2em; margin-bottom: 15px; }
+  .cta-section p { font-size: 1.1em; opacity: 0.9; margin-bottom: 30px; }
+  .cta-button {
+    display: inline-block; background: white; color: #302b63;
+    padding: 15px 40px; border-radius: 50px; text-decoration: none;
+    font-weight: bold; font-size: 1.1em;
+  }
+  .footer {
+    background: #1a1a2e; color: white; padding: 30px 40px;
+    text-align: center; font-size: 0.85em; opacity: 0.7;
+  }
+  .mockup-container {
+    margin: 30px 0; border: 2px solid #eee; border-radius: 12px; overflow: hidden;
+  }
+  .mockup-container iframe { width: 100%; height: 600px; border: none; }
+  @media (max-width: 768px) {
+    .compare-grid { grid-template-columns: 1fr; }
+    .metrics-grid { grid-template-columns: 1fr 1fr; }
+    .header h1 { font-size: 1.6em; }
+    .section { padding: 30px 20px; }
+  }
+</style>
+</head>
+<body oncontextmenu="return false;">
+
+<div class="watermark"></div>
+<div class="overlay"></div>
+<script>
+document.addEventListener('keydown', function(e) {
+  if ((e.ctrlKey || e.metaKey) && ['s','u','p','S','U','P'].includes(e.key)) {
+    e.preventDefault(); return false;
+  }
+  if (e.key === 'F12') { e.preventDefault(); return false; }
+});
+(function() {
+  var devtools = /./;
+  devtools.toString = function() { this.opened = true; };
+  console.log('%c', devtools);
+  setInterval(function() {
+    if (devtools.opened) { debugger; devtools.opened = false; }
+  }, 500);
+})();
+</script>
+<canvas id="scramble" style="position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;z-index:-1;"></canvas>
+<script>
+(function() {
+  var c = document.getElementById('scramble'), ctx = c.getContext('2d');
+  c.width = 200; c.height = 200;
+  function noise() {
+    var id = ctx.createImageData(200, 200);
+    for (var i = 0; i < id.data.length; i++) id.data[i] = Math.random() * 255;
+    ctx.putImageData(id, 0, 0); requestAnimationFrame(noise);
+  }
+  noise();
+})();
+</script>
+
+<div class="header">
+  <h1>Marketing Audit Report</h1>
+  <div class="subtitle">{{BUSINESS_NAME}} — {{BUSINESS_TYPE}}</div>
+  <div class="date">Generated: {{AUDIT_DATE}} | URL: {{TARGET_URL}}</div>
+</div>
+
+<div class="section">
+  <h2>Executive Summary</h2>
+  <p>{{EXECUTIVE_SUMMARY}}</p>
+  <div class="metrics-grid">
+    <div class="metric-card">
+      <div class="value">{{GBP_RATING}}</div>
+      <div class="label">Google Rating</div>
+    </div>
+    <div class="metric-card dark">
+      <div class="value">{{REVIEW_COUNT}}</div>
+      <div class="label">Total Reviews</div>
+    </div>
+    <div class="metric-card">
+      <div class="value">{{RESPONSE_RATE}}</div>
+      <div class="label">Response Rate</div>
+    </div>
+    <div class="metric-card dark">
+      <div class="value">{{LCP_SCORE}}</div>
+      <div class="label">LCP (Load Speed)</div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>Google Business Profile Analysis</h2>
+  <p>{{GBP_SUMMARY}}</p>
+  <h3>Top Gaps Identified</h3>
+  {{GBP_GAPS}}
+  <h3>Recent Reviews</h3>
+  {{REVIEWS_TABLE}}
+</div>
+
+<div class="section">
+  <h2>Website Performance Audit</h2>
+  <table class="perf-table">
+    <tr><th>Metric</th><th>Value</th><th>Status</th><th>Target</th></tr>
+    <tr>
+      <td>First Contentful Paint (FCP)</td>
+      <td>{{FCP_VALUE}}</td>
+      <td><span class="{{FCP_STATUS_CLASS}}">{{FCP_STATUS}}</span></td>
+      <td>&lt; 1.5s</td>
+    </tr>
+    <tr>
+      <td>Largest Contentful Paint (LCP)</td>
+      <td>{{LCP_VALUE}}</td>
+      <td><span class="{{LCP_STATUS_CLASS}}">{{LCP_STATUS}}</span></td>
+      <td>&lt; 2.5s</td>
+    </tr>
+    <tr>
+      <td>Time to Interactive (TTI)</td>
+      <td>{{TTI_VALUE}}</td>
+      <td><span class="{{TTI_STATUS_CLASS}}">{{TTI_STATUS}}</span></td>
+      <td>&lt; 3.0s</td>
+    </tr>
+    <tr>
+      <td>Cumulative Layout Shift (CLS)</td>
+      <td>{{CLS_VALUE}}</td>
+      <td><span class="{{CLS_STATUS_CLASS}}">{{CLS_STATUS}}</span></td>
+      <td>&lt; 0.1</td>
+    </tr>
+    <tr>
+      <td>Has H1 Tag</td>
+      <td>{{H1_STATUS}}</td>
+      <td><span class="{{H1_CLASS}}">{{H1_RESULT}}</span></td>
+      <td>Required</td>
+    </tr>
+    <tr>
+      <td>Has CTA Above Fold</td>
+      <td>{{CTA_STATUS}}</td>
+      <td><span class="{{CTA_CLASS}}">{{CTA_RESULT}}</span></td>
+      <td>Required</td>
+    </tr>
+    <tr>
+      <td>Has Phone Number</td>
+      <td>{{PHONE_STATUS}}</td>
+      <td><span class="{{PHONE_CLASS}}">{{PHONE_RESULT}}</span></td>
+      <td>Required</td>
+    </tr>
+  </table>
+  <h3>Website Gaps</h3>
+  {{WEBSITE_GAPS}}
+</div>
+
+<div class="section">
+  <h2>The Gap: Collection vs. Intelligence</h2>
+  <p>This audit reveals the critical gap between where {{BUSINESS_NAME}} is today with review <em>collection</em> and where they could be with AI-powered <em>intelligence</em>.</p>
+  <div class="compare-grid">
+    <div class="compare-current">
+      <h3>Current State (Collection)</h3>
+      <ul>
+        <li>ReviewTap NFC/QR stand collects reviews</li>
+        <li>{{RESPONSE_RATE}} response rate to reviews</li>
+        <li>{{AVG_RESPONSE_TIME}} average response time</li>
+        <li>Manual review monitoring</li>
+        <li>No review routing or smart filtering</li>
+        <li>Website LCP: {{LCP_VALUE}}</li>
+      </ul>
+    </div>
+    <div class="compare-jce">
+      <h3>With JCE Media (Intelligence)</h3>
+      <ul>
+        <li>Speed-to-lead: Instant</li>
+        <li>AI auto-response: 100% coverage</li>
+        <li>Positive reviews &rarr; public automatically</li>
+        <li>Negative reviews &rarr; private resolution</li>
+        <li>Full-funnel marketing automation</li>
+        <li>Optimized landing pages &lt; 1s load</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>JCE Media Performance Metrics</h2>
+  <p>Based on $15M+ managed ad spend across our client portfolio:</p>
+  <div class="metrics-grid">
+    <div class="metric-card"><div class="value">416%</div><div class="label">ROI</div></div>
+    <div class="metric-card dark"><div class="value">65%</div><div class="label">Lower CPL</div></div>
+    <div class="metric-card"><div class="value">8.5x</div><div class="label">ROAS</div></div>
+    <div class="metric-card dark"><div class="value">$15M+</div><div class="label">Managed Ad Spend</div></div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>Recommended Website Mockup</h2>
+  <p>Below is a conversion-optimized mockup showing how the site could perform with JCE Media's approach:</p>
+  <div class="mockup-container">
+    {{MOCKUP_IFRAME}}
+  </div>
+</div>
+
+<div class="cta-section">
+  <h2>Ready to Close the Gap?</h2>
+  <p>Transform review collection into review intelligence. Let JCE Media show you exactly what you're leaving on the table.</p>
+  <a href="mailto:info@jcemedia.com" class="cta-button">Schedule Your Strategy Call</a>
+</div>
+
+<div class="footer">
+  <p>Marketing Audit &copy; {{YEAR}} &mdash; ReviewTap x JCE Media</p>
+  <p>This report is confidential and intended solely for {{BUSINESS_NAME}}.</p>
+</div>
+
+</body>
+</html>
