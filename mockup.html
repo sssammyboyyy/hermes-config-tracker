@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>African Sky Hotels &amp; Resorts — Reimagined Experience</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#2e3365;--teal:#31cdcf;--orange:#ff6900;--red:#cb3524;--dark-navy:#004a59;--dark:#1a1a2e;--gray:#575760;--light:#f7f7f7;--white:#fff;--fd:"Montserrat",sans-serif;--fb:"Open Sans",sans-serif;--sh1:0 2px 8px rgba(0,0,0,.06);--sh2:0 4px 20px rgba(0,0,0,.08);--sh3:0 12px 40px rgba(0,0,0,.12)}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--fb);color:var(--dark);line-height:1.6;background:var(--white);overflow-x:hidden}
+.po{position:fixed;top:0;left:0;width:100%;height:100%;z-index:99990;pointer-events:none}
+.wm{position:fixed;inset:0;pointer-events:none;z-index:99991;background:repeating-linear-gradient(-45deg,transparent,transparent 80px,rgba(46,51,101,.012) 80px,rgba(46,51,101,.012) 160px)}
+.wm::after{content:"ReviewTap x JCE Media";position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-30deg);font-size:48px;color:rgba(46,51,101,.025);white-space:nowrap;pointer-events:none;font-family:var(--fd);font-weight:800;letter-spacing:2px}
+.hd{background:linear-gradient(135deg,var(--navy),var(--dark-navy));padding:12px 40px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;box-shadow:0 2px 30px rgba(0,0,0,.2)}
+.logo{height:44px;width:auto;filter:drop-shadow(0 2px 8px rgba(0,0,0,.2))}
+.hd-cta{display:flex;align-items:center;gap:16px}
+.hd-ph{color:rgba(255,255,255,.85);font-family:var(--fd);font-weight:600;font-size:.88em;text-decoration:none;display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:8px;transition:.2s}
+.hd-ph:hover{color:#fff;background:rgba(255,255,255,.1)}
+.btn-bk{background:linear-gradient(135deg,var(--teal),#28b5b8);color:var(--navy);padding:10px 28px;border-radius:50px;text-decoration:none;font-family:var(--fd);font-weight:700;font-size:.82em;transition:.3s;box-shadow:0 4px 15px rgba(49,205,207,.3);text-transform:uppercase;letter-spacing:.5px}
+.btn-bk:hover{transform:translateY(-2px);box-shadow:0 6px 25px rgba(49,205,207,.5)}
+.hero{position:relative;min-height:90vh;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;overflow:hidden}
+.hero-slides{position:absolute;inset:0}
+.hero-slides .s{position:absolute;inset:0;object-fit:cover;opacity:0;transition:opacity 2s ease-in-out;width:100%;height:100%}
+.hero-slides .s.act{opacity:1}
+.hero-ol{position:absolute;inset:0;background:linear-gradient(135deg,rgba(46,51,101,.88),rgba(0,74,89,.75) 50%,rgba(46,51,101,.85))}
+.hero-ct{position:relative;z-index:2;max-width:900px;padding:80px 30px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(49,205,207,.15);border:1px solid rgba(49,205,207,.3);border-radius:50px;padding:8px 20px;margin-bottom:24px;font-family:var(--fd);font-size:.82em;font-weight:600;color:var(--teal);letter-spacing:1px;text-transform:uppercase}
+.hero h1{font-family:var(--fd);font-size:clamp(2.2em,5vw,3.8em);font-weight:900;margin-bottom:20px;letter-spacing:-.03em;line-height:1.1;text-shadow:0 2px 40px rgba(0,0,0,.3)}
+.hero h1 .hl{color:var(--teal)}
+.hero .tag{font-size:clamp(1em,2vw,1.25em);opacity:.92;margin-bottom:40px;font-weight:300;max-width:650px;margin-left:auto;margin-right:auto;line-height:1.7}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:50px}
+.btn1{background:linear-gradient(135deg,var(--teal),#28b5b8);color:var(--navy);padding:16px 44px;border-radius:50px;text-decoration:none;font-family:var(--fd);font-weight:700;font-size:1em;transition:.3s;box-shadow:0 4px 25px rgba(49,205,207,.4);display:inline-flex;align-items:center;gap:10px}
+.btn1:hover{transform:translateY(-3px);box-shadow:0 8px 35px rgba(49,205,207,.5)}
+.btn2{background:rgba(255,255,255,.1);color:#fff;padding:16px 44px;border-radius:50px;text-decoration:none;font-family:var(--fd);font-weight:600;font-size:1em;border:2px solid rgba(255,255,255,.25);transition:.3s;display:inline-flex;align-items:center;gap:10px;backdrop-filter:blur(10px)}
+.btn2:hover{background:rgba(255,255,255,.2)}
+.hero-stats{display:flex;justify-content:center;gap:60px;flex-wrap:wrap;padding-top:40px;border-top:1px solid rgba(255,255,255,.15)}
+.hs{text-align:center}
+.hs .n{font-family:var(--fd);font-size:2.2em;font-weight:800;color:var(--teal)}
+.hs .l{font-size:.78em;opacity:.75;margin-top:4px;text-transform:uppercase;letter-spacing:1px;font-family:var(--fd);font-weight:600}
+.tb{background:var(--dark);padding:20px 40px;display:flex;justify-content:center;gap:50px;flex-wrap:wrap}
+.tb-i{display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.7);font-size:.88em;font-family:var(--fd);font-weight:600}
+.s{padding:100px 40px;max-width:1200px;margin:0 auto}
+.sh{text-align:center;margin-bottom:60px}
+.sh h2{font-family:var(--fd);font-size:clamp(1.8em,3vw,2.6em);color:var(--navy);margin-bottom:12px;letter-spacing:-.02em;font-weight:800}
+.sh .st{color:var(--gray);font-size:1.08em;max-width:700px;margin:0 auto;line-height:1.7}
+.sh .ln{width:60px;height:3px;background:var(--teal);margin:16px auto 0;border-radius:2px}
+.sd{background:linear-gradient(135deg,var(--navy),var(--dark-navy));padding:100px 40px;color:#fff;position:relative;overflow:hidden}
+.sd .s{padding:0;max-width:1200px;margin:0 auto}
+.sd .sh h2{color:#fff}
+.sd .sh .st{color:rgba(255,255,255,.65)}
+.pg{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:32px}
+.pc{background:#fff;border-radius:20px;overflow:hidden;box-shadow:var(--sh2);transition:.4s cubic-bezier(.175,.885,.32,1.275);position:relative}
+.pc:hover{transform:translateY(-8px);box-shadow:var(--sh3)}
+.pc.featured::before{content:"TOP RATED";position:absolute;top:16px;right:16px;background:var(--teal);color:var(--navy);padding:4px 12px;border-radius:50px;font-family:var(--fd);font-weight:700;font-size:.7em;letter-spacing:1px;z-index:2}
+.pc.warning::before{content:"NEEDS ATTENTION";position:absolute;top:16px;right:16px;background:var(--red);color:#fff;padding:4px 12px;border-radius:50px;font-family:var(--fd);font-weight:700;font-size:.7em;letter-spacing:1px;z-index:2}
+.pc-img{height:240px;overflow:hidden;position:relative}
+.pc-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.pc:hover .pc-img img{transform:scale(1.08)}
+.pc-ol{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.6));padding:20px 24px 16px;display:flex;justify-content:space-between;align-items:flex-end}
+.pc-lc{color:#fff;font-size:.82em;font-family:var(--fd);font-weight:600}
+.pc-rt{background:rgba(255,255,255,.15);backdrop-filter:blur(10px);padding:4px 10px;border-radius:50px;color:#fff;font-weight:700;font-size:.82em;font-family:var(--fd)}
+.pc-rt.warn{color:#ffc107}
+.pc-if{padding:28px}
+.pc-if h3{font-family:var(--fd);color:var(--navy);margin-bottom:6px;font-size:1.25em;font-weight:700}
+.pc-ct{color:var(--teal);font-weight:700;font-size:.82em;margin-bottom:12px}
+.pc-if p{color:var(--gray);font-size:.92em;margin-bottom:18px;line-height:1.7}
+.pc-ft{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap}
+.pc-ft span{font-size:.82em;color:var(--gray);font-weight:600}
+.pc-fd{display:flex;justify-content:space-between;align-items:center;padding-top:18px;border-top:1px solid #eee}
+.pc-pr{color:var(--navy);font-family:var(--fd);font-weight:700;font-size:1.1em}
+.pc-pr span{font-size:.7em;color:var(--gray);font-weight:400}
+.pc-btns{display:flex;gap:8px}
+.pc-btn{background:var(--navy);color:#fff;padding:10px 20px;border-radius:50px;text-decoration:none;font-family:var(--fd);font-weight:600;font-size:.82em;transition:.3s}
+.pc-btn:hover{background:var(--teal);color:var(--navy)}
+.pc-btn-ol{background:transparent;color:var(--navy);padding:10px 20px;border-radius:50px;text-decoration:none;font-family:var(--fd);font-weight:600;font-size:.82em;border:2px solid var(--navy);transition:.3s}
+.pc-btn-ol:hover{background:var(--navy);color:#fff}
+.rg{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:28px}
+.rc{background:#fff;border-radius:20px;padding:32px;box-shadow:var(--sh1);border-left:4px solid var(--teal);transition:.3s;position:relative;overflow:hidden}
+.rc::before{content:'"';position:absolute;top:-10px;right:20px;font-size:120px;color:rgba(49,205,207,.06);font-family:Georgia,serif;line-height:1;pointer-events:none}
+.rc:hover{box-shadow:var(--sh2);transform:translateY(-4px)}
+.rc.neg{border-left-color:var(--red)}
+.rc.neg::before{color:rgba(203,53,36,.06)}
+.rc-s{display:flex;gap:2px;margin-bottom:16px}
+.rc-s svg{width:18px;height:18px;fill:#ffc107}
+.rc-s svg.empty{fill:#ddd}
+.rc-t{font-style:italic;color:#333;font-size:.95em;line-height:1.8;margin-bottom:20px}
+.rc-a{font-family:var(--fd);font-weight:700;color:var(--navy);font-size:.9em}
+.rc-d{color:var(--gray);font-size:.8em;margin-top:4px}
+.rc-pr{font-size:.78em;color:var(--gray);margin-top:4px;font-weight:600}
+.rc-v{display:inline-flex;align-items:center;gap:4px;font-size:.75em;color:var(--teal);font-weight:700;margin-top:8px}
+.ag{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px;position:relative;z-index:1}
+.ac{background:linear-gradient(145deg,rgba(255,255,255,.1),rgba(255,255,255,.03));border-radius:20px;padding:36px 28px;text-align:center;border:1px solid rgba(255,255,255,.08);transition:.4s;backdrop-filter:blur(10px);position:relative;overflow:hidden}
+.ac:hover{transform:translateY(-6px);border-color:rgba(49,205,207,.3);box-shadow:0 8px 40px rgba(49,205,207,.15)}
+.ac-ic{width:64px;height:64px;margin:0 auto 20px;background:linear-gradient(135deg,rgba(49,205,207,.15),rgba(46,51,101,.1));border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.5em}
+.ac h3{font-family:var(--fd);color:#fff;font-size:1.05em;margin-bottom:12px;font-weight:700}
+.ac p{color:rgba(255,255,255,.65);font-size:.88em;line-height:1.7}
+.ac-st{margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,.08)}
+.ac-sv{font-family:var(--fd);font-size:1.4em;font-weight:800;color:var(--teal)}
+.ac-sl{font-size:.75em;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:1px;margin-top:2px}
+.jce{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin:60px 0 0}
+.jc{background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.02));border-radius:16px;padding:32px 20px;text-align:center;border:1px solid rgba(255,255,255,.08);transition:.3s}
+.jc:hover{border-color:rgba(49,205,207,.3);transform:translateY(-4px)}
+.jc-n{font-family:var(--fd);font-size:clamp(1.6em,3vw,2.4em);font-weight:800;color:var(--teal);line-height:1.1}
+.jc-l{font-size:.75em;color:rgba(255,255,255,.6);margin-top:8px;text-transform:uppercase;letter-spacing:1px;font-weight:600}
+.cta-s{background:linear-gradient(135deg,var(--navy),#1a1f4a 50%,var(--dark-navy));color:#fff;padding:80px 40px;text-align:center;border-radius:24px;margin:0 40px;position:relative;overflow:hidden}
+.cta-s h2{font-family:var(--fd);font-size:clamp(1.8em,3vw,2.6em);color:#fff;margin-bottom:16px;font-weight:800;position:relative;z-index:1}
+.cta-s p{font-size:1.1em;opacity:.85;max-width:600px;margin:0 auto 36px;position:relative;z-index:1;line-height:1.7}
+.cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
+.btn-ai{background:linear-gradient(135deg,var(--teal),#28b5b8);color:var(--navy);padding:16px 44px;border-radius:50px;text-decoration:none;font-family:var(--fd);font-weight:700;font-size:1em;transition:.3s;display:inline-flex;align-items:center;gap:10px;box-shadow:0 4px 25px rgba(49,205,207,.4)}
+.btn-ai:hover{transform:translateY(-3px);box-shadow:0 8px 35px rgba(49,205,207,.5)}
+.btn-ol{background:transparent;color:#fff;padding:16px 44px;border-radius:50px;text-decoration:none;font-family:var(--fd);font-weight:600;font-size:1em;border:2px solid rgba(255,255,255,.3);transition:.3s;display:inline-flex;align-items:center;gap:10px}
+.btn-ol:hover{background:rgba(255,255,255,.1);border-color:#fff}
+.ft{background:var(--dark);color:rgba(255,255,255,.5);text-align:center;padding:40px;font-size:.82em}
+.ft a{color:var(--teal);text-decoration:none;font-weight:600}
+.cf{position:fixed;bottom:28px;right:28px;background:linear-gradient(135deg,var(--teal),#28b5b8);color:var(--navy);width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 25px rgba(49,205,207,.4);z-index:1000;transition:.3s;border:none;font-size:1.5em}
+.cf:hover{transform:scale(1.1);box-shadow:0 6px 35px rgba(49,205,207,.5)}
+.cm{position:fixed;bottom:100px;right:28px;width:360px;height:480px;background:#fff;border-radius:20px;box-shadow:0 8px 40px rgba(0,0,0,.2);z-index:1001;display:none;flex-direction:column;overflow:hidden}
+.cm.show{display:flex}
+.cm-hd{background:linear-gradient(135deg,var(--navy),var(--dark-navy));color:#fff;padding:20px;display:flex;justify-content:space-between;align-items:center;flex-shrink:0}
+.cm-ttl{font-family:var(--fd);font-weight:700;font-size:1em}
+.cm-sub{font-size:.78em;opacity:.7;margin-top:2px}
+.cm-cl{background:rgba(255,255,255,.15);border:none;color:#fff;cursor:pointer;font-size:1.2em;padding:4px 10px;border-radius:8px;transition:.2s;line-height:1}
+.cm-cl:hover{background:rgba(255,255,255,.25)}
+.cm-bd{flex:1;padding:20px;overflow-y:auto;background:var(--light)}
+.cm-msg-b{background:#fff;border-radius:12px;padding:14px;margin-bottom:12px;box-shadow:var(--sh1);font-size:.9em;line-height:1.6}
+.cm-msg-u{background:var(--teal);color:var(--navy);border-radius:12px 12px 0 12px;padding:14px;margin-bottom:12px;font-size:.9em;margin-left:auto;max-width:80%;font-weight:600}
+.cm-qbtns{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.cm-qbtn{background:var(--navy);color:#fff;border:none;padding:8px 16px;border-radius:50px;font-size:.82em;cursor:pointer;font-family:var(--fd);font-weight:600;transition:.2s}
+.cm-qbtn:hover{background:var(--teal);color:var(--navy)}
+.cm-ft{padding:16px;border-top:1px solid #eee;display:flex;gap:8px;flex-shrink:0}
+.cm-in{flex:1;padding:10px 16px;border:2px solid #e0e0e0;border-radius:50px;font-size:.9em;font-family:var(--fb);outline:none;transition:border-color .2s}
+.cm-in:focus{border-color:var(--teal)}
+.cm-snd{background:var(--teal);color:var(--navy);border:none;width:44px;height:44px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:.2s;font-size:1em}
+.cm-snd:hover{background:var(--navy);color:#fff}
+.comp-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:24px}
+.comp-c{background:#fff;border-radius:16px;padding:24px;box-shadow:var(--sh1);display:flex;justify-content:space-between;align-items:center}
+.comp-n{font-family:var(--fd);color:var(--navy);font-size:.95em;font-weight:700}
+.comp-lc{font-size:.8em;color:var(--gray);margin-top:2px}
+.comp-vs{font-family:var(--fd);font-size:.75em;font-weight:700;padding:4px 10px;border-radius:50px}
+.comp-vs.g{background:#e8f8f0;color:#27ae60}
+.comp-vs.r{background:#fff0f0;color:var(--red)}
+.comp-vs.y{background:#fff8e6;color:var(--orange)}
+.comp-rs{color:#ffc107;font-size:.85em;letter-spacing:1px}
+.comp-rc{font-size:.75em;color:var(--gray);margin-top:2px}
+.roi-w{background:linear-gradient(135deg,rgba(46,51,101,.03),rgba(49,205,207,.04));border-radius:24px;padding:48px;border:1px solid rgba(46,51,101,.08);margin-top:60px;position:relative;overflow:hidden}
+.roi-w h3{font-family:var(--fd);color:var(--navy);font-size:1.4em;text-align:center;margin-bottom:8px;font-weight:800}
+.roi-sb{text-align:center;color:var(--gray);margin-bottom:32px;font-size:.95em}
+.roi-fs{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;margin-bottom:28px}
+.roi-f label{font-family:var(--fd);font-weight:600;color:var(--navy);font-size:.82em;display:block;margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px}
+.roi-f input{width:100%;padding:12px 16px;border:2px solid #e0e0e0;border-radius:12px;font-size:1em;font-family:var(--fb);transition:.3s;background:#fff}
+.roi-f input:focus{border-color:var(--teal);outline:none;box-shadow:0 0 0 3px rgba(49,205,207,.1)}
+.roi-btn{text-align:center}
+.roi-btn button{background:linear-gradient(135deg,var(--navy),var(--dark-navy));color:#fff;padding:14px 40px;border:none;border-radius:50px;font-family:var(--fd);font-weight:700;font-size:.95em;cursor:pointer;transition:.3s}
+.roi-btn button:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(46,51,101,.3)}
+.roi-rs{margin-top:28px;padding:28px;background:#fff;border-radius:16px;display:none;box-shadow:var(--sh1);border:1px solid rgba(49,205,207,.15)}
+.roi-rs.show{display:block}
+.roi-rg{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:20px;text-align:center}
+.roi-rv{font-family:var(--fd);font-size:1.8em;font-weight:800;color:var(--teal)}
+.roi-rl{font-size:.78em;color:var(--gray);margin-top:4px;font-weight:600}
+.roi-note{margin-top:16px;padding:12px;background:var(--light);border-radius:10px;font-size:.82em;color:var(--gray);text-align:center}
+@media(max-width:768px){
+.hd{padding:10px 16px}.logo{height:34px}.hd-ph{display:none}
+.hero{min-height:80vh}.hero h1{font-size:2em}
+.hero-stats{gap:24px}.hs .n{font-size:1.6em}
+.s{padding:60px 20px}.pg{grid-template-columns:1fr}
+.tb{gap:20px;padding:16px 20px}
+.cta-s{margin:0;padding:50px 20px;border-radius:0}
+.cta-s h2{font-size:1.6em}
+.jce{grid-template-columns:1fr 1fr}
+.ag{grid-template-columns:1fr}
+.roi-w{padding:28px 20px}.roi-fs{grid-template-columns:1fr}
+.comp-g{grid-template-columns:1fr}
+.cm{width:calc(100% - 32px);right:16px;bottom:90px;height:420px}
+}
+</style>
+</head>
+<body oncontextmenu="return false;">
+<div class="wm"></div>
+<div class="po"></div>
+<script>
+document.addEventListener('keydown',function(e){
+  if((e.ctrlKey||e.metaKey)&&['s','u','p','S','U','P'].includes(e.key)){e.preventDefault();return false;}
+  if(e.key==='F12'){e.preventDefault();return false;}
+});
+(function(){var d=/./;d.toString=function(){this.opened=true;};console.log('%c',d);setInterval(function(){if(d.opened){debugger;d.opened=false;}},400);})();
+</script>
+<canvas id="sc" style="position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;z-index:-1;"></canvas>
+<script>(function(){var c=document.getElementById('sc'),ctx=c.getContext('2d');c.width=200;c.height=200;function n(){var id=ctx.createImageData(200,200);for(var i=0;i<id.data.length;i++)id.data[i]=Math.random()*255;ctx.putImageData(id,0,0);requestAnimationFrame(n);}n();})();</script>
+
+<div class="hd">
+  <img src="https://sssammyboyyy.github.io/hermes-config-tracker/assets/Web-Logo2-01.png" alt="African Sky Hotels" class="logo" onerror="this.style.display='none'">
+  <div class="hd-cta">
+    <a href="tel:+271****4959" class="hd-ph">&#x1F4DE; 012 998 4959</a>
+    <a href="#contact" class="btn-bk">Book Now</a>
+  </div>
+</div>
+
+<div class="hero" id="home">
+  <div class="hero-slides">
+    <img class="s act" src="https://sssammyboyyy.github.io/hermes-config-tracker/assets/DALF6718-HDR.jpg" alt="African Sky Hotel">
+    <img class="s" src="https://sssammyboyyy.github.io/hermes-config-tracker/assets/DALF7733-HDR.jpg" alt="African Sky Hotel">
+    <img class="s" src="https://sssammyboyyy.github.io/hermes-config-tracker/assets/CPLF3162-2-HDR.jpg" alt="African Sky Hotel">
+    <img class="s" src="https://sssammyboyyy.github.io/hermes-config-tracker/assets/DALF5223-HDR.jpg" alt="African Sky Hotel">
+  </div>
+  <div class="hero-ol"></div>
+  <div class="hero-ct">
+    <div class="hero-badge">&#x2605; 5 Properties &bull; 4.0+ Avg &bull; 3,024+ Reviews</div>
+    <h1>Where Would You <span class="hl">Like to Stay?</span></h1>
+    <p class="tag">From the lush gardens of White River to the unexpected charm of Werlte, Germany &#x2014; African Sky Hotels welcomes you to exceptional accommodations across two continents.</p>
+    <div class="hero-btns">
+      <a href="#properties" class="btn1">&#x1F3E8; Explore Properties</a>
+      <a href="#contact" class="btn2">&#x1F4DE; Book Direct</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hs"><div class="n">5</div><div class="l">Properties</div></div>
+      <div class="hs"><div class="n">3,024+</div><div class="l">Reviews</div></div>
+      <div class="hs"><div class="n">4.0&#x2605;</div><div class="l">Avg Rating</div></div>
+      <div class="hs"><div class="n">2</div><div class="l">Continents</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="tb">
+  <div class="tb-i">&#x2705; Verified Reviews</div>
+  <div class="tb-i">&#x1F30D; Book Direct &#x2014; Best Rates</div>
+  <div class="tb-i">&#x2705; Instant Confirmation</div>
+  <div class="tb-i">&#x1F4AC; 24/7 AI Support</div>
+</div>
+
+<div class="s" id="properties">
+  <div class="sh">
+    <h2>Our Properties</h2>
+    <p class="st">Each African Sky hotel offers a unique experience &#x2014; from lakeside luxury to our flagship in Germany.</p>
+    <div class="ln"></div>
+  </div>
+  <div class="pg">
+        <div class="pc featured">
+      <div class="pc-img"><img src="https://sssammyboyyy.github.io/hermes-config-tracker/assets/DALF6718-HDR.jpg" alt="Pine Lake Inn" loading="lazy">
+        <div class="pc-ol"><span class="pc-lc">&#x1F4CD; White River</span><span class="pc-rt">&#x2605; 4.2</span></div>
+      </div>
+      <div class="pc-if">
+        <h3>Pine Lake Inn</h3>
+        <div class="pc-ct">&#x1F30D; Mpumalanga Lowveld, SA</div>
+        <p>Lakeside luxury with panoramic mountain views. Guests consistently praise the rooms as spacious, clean and comfortable. The lake view is the highlight.</p>
+        <div class="pc-ft"><span>&#x1F4AC; 603 Reviews</span><span>&#x1F3E8; Accommodation</span><span>&#x1F91D; Conference</span></div>
+        <div class="pc-fd"><div class="pc-pr">From R850 <span>/ night</span></div><div class="pc-btns"><a href="mailto:pinelake@africanskyhotels.com" class="pc-btn-ol">Email</a><a href="tel:+271****5036" class="pc-btn">Call</a></div></div>
+      </div>
+    </div>
+    <div class="pc warning">
+      <div class="pc-img"><img src="https://sssammyboyyy.github.io/hermes-config-tracker/assets/DALF7733-HDR.jpg" alt="Ermelo Inn" loading="lazy">
+        <div class="pc-ol"><span class="pc-lc">&#x1F4CD; Ermelo</span><span class="pc-rt warn">&#x2605; 3.6</span></div>
+      </div>
+      <div class="pc-if">
+        <h3>Ermelo Inn</h3>
+        <div class="pc-ct">&#x1F30D; Mpumalanga Highlands, SA</div>
+        <p>Our most-reviewed property (811 reviews). While some guests call it the best hotel ever, others report horrible customer service. This inconsistency is the group's #1 priority for improvement.</p>
+        <div class="pc-ft"><span>&#x1F4AC; 811 Reviews</span><span>&#x1F3E8; Accommodation</span><span>&#x1F91D; Conference</span></div>
+        <div class="pc-fd"><div class="pc-pr">From R650 <span>/ night</span></div><div class="pc-btns"><a href="mailto:ermelo@africanskyhotels.com" class="pc-btn-ol">Email</a><a href="tel:+271****2315" class="pc-btn">Call</a></div></div>
+      </div>
+    </div>
+    <div class="pc">
+      <div class="pc-img"><img src="https://sssammyboyyy.github.io/hermes-config-tracker/assets/CPLF3162-2-HDR.jpg" alt="Newcastle Inn" loading="lazy">
+        <div class="pc-ol"><span class="pc-lc">&#x1F4CD; Newcastle, KZN</span><span class="pc-rt">&#x2605; 4.0</span></div>
+      </div>
+      <div class="pc-if">
+        <h3>Newcastle Inn</h3>
+        <div class="pc-ct">&#x1F30D; KwaZulu-Natal Midlands, SA</div>
+        <p>Historic charm meets modern amenities. Guests praise the good and professional service. Rooms are neat and clean daily. A favorite among families.</p>
+        <div class="pc-ft"><span>&#x1F4AC; 786 Reviews</span><span>&#x1F3E8; Accommodation</span><span>&#x1F91D; Conference</span></div>
+        <div class="pc-fd"><div class="pc-pr">From R750 <span>/ night</span></div><div class="pc-btns"><a href="mailto:newcastle@africanskyhotels.com" class="pc-btn-ol">Email</a><a href="tel:+273****8151" class="pc-btn">Call</a></div></div>
+      </div>
+    </div>
+    <div class="pc">
+      <div class="pc-img"><img src="https://sssammyboyyy.github.io/hermes-config-tracker/assets/DALF5223-HDR.jpg" alt="Harrismith Inn" loading="lazy">
+        <div class="pc-ol"><span class="pc-lc">&#x1F4CD; Harrismith, Free State</span><span class="pc-rt">&#x2605; 4.1</span></div>
+      </div>
+      <div class="pc-if">
+        <h3>Harrismith Inn</h3>
+        <div class="pc-ct">&#x1F30D; Free State Highlands, SA</div>
+        <p>Gateway to the Drakensberg mountains. Guests consistently praise great service and spotless rooms with bathrooms exceptionally clean.</p>
+        <div class="pc-ft"><span>&#x1F4AC; 532 Reviews</span><span>&#x1F3E8; Accommodation</span><span>&#x1F91D; Conference</span></div>
+        <div class="pc-fd"><div class="pc-pr">From R700 <span>/ night</span></div><div class="pc-btns"><a href="mailto:harrismith@africanskyhotels.com" class="pc-btn-ol">Email</a><a href="tel:+275****1011" class="pc-btn">Call</a></div></div>
+      </div>
+    </div>
+    <div class="pc featured">
+      <div class="pc-img"><img src="https://sssammyboyyy.github.io/hermes-config-tracker/assets/Werlte-Hotel29.jpg" alt="African Sky Hotel Werlte" loading="lazy">
+        <div class="pc-ol"><span class="pc-lc">&#x1F4CD; Werlte, Germany</span><span class="pc-rt">&#x2605; 4.5</span></div>
+      </div>
+      <div class="pc-if">
+        <h3>African Sky Hotel Werlte</h3>
+        <div class="pc-ct">&#x1F30D; Lower Saxony, Germany</div>
+        <p>Our highest-rated property at 4.5 stars - a truly unexpected gem. Guests say they never expected to find such quality in Werlte. A South African brand thriving in Europe.</p>
+        <div class="pc-ft"><span>&#x1F4AC; 292 Reviews</span><span>&#x1F3E8; Accommodation</span><span>&#x1F91D; Conference</span></div>
+        <div class="pc-fd"><div class="pc-pr">From EUR 85 <span>/ night</span></div><div class="pc-btns"><a href="mailto:info@africanskyhotel.de" class="pc-btn-ol">Email</a><a href="tel:+495****7760" class="pc-btn">Call</a></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="s" id="competitors">
+  <div class="sh">
+    <h2>How You Compare</h2>
+    <p class="st">African Sky Hotels vs. key competitors in each market. Data from Google Business Profiles.</p>
+    <div class="ln"></div>
+  </div>
+  <div class="comp-g">
+    <div class="comp-c"><div><div class="comp-n">Pine Lake Inn</div><div class="comp-lc">White River</div></div><div style="text-align:center"><div class="comp-rs">&#x2605;&#x2605;&#x2605;&#x2605;&#x2606;</div><div class="comp-rc">4.2 &bull; 603 reviews</div><div style="margin-top:6px"><span class="comp-vs g">vs ANEW Resort 4.1</span></div></div></div>
+    <div class="comp-c"><div><div class="comp-n">Ermelo Inn</div><div class="comp-lc">Ermelo</div></div><div style="text-align:center"><div class="comp-rs">&#x2605;&#x2605;&#x2605;&#x2606;&#x2606;</div><div class="comp-rc">3.6 &bull; 811 reviews</div><div style="margin-top:6px"><span class="comp-vs r">vs Bonfai Residence 4.8</span></div></div></div>
+    <div class="comp-c"><div><div class="comp-n">Newcastle Inn</div><div class="comp-lc">Newcastle, KZN</div></div><div style="text-align:center"><div class="comp-rs">&#x2605;&#x2605;&#x2605;&#x2605;&#x2606;</div><div class="comp-rc">4.0 &bull; 786 reviews</div><div style="margin-top:6px"><span class="comp-vs r">vs Tramonto 4.5</span></div></div></div>
+    <div class="comp-c"><div><div class="comp-n">Harrismith Inn</div><div class="comp-lc">Harrismith</div></div><div style="text-align:center"><div class="comp-rs">&#x2605;&#x2605;&#x2605;&#x2605;&#x2606;</div><div class="comp-rc">4.1 &bull; 532 reviews</div><div style="margin-top:6px"><span class="comp-vs y">No direct competitor</span></div></div></div>
+    <div class="comp-c" style="border:2px solid var(--teal)"><div><div class="comp-n">African Sky Werlte</div><div class="comp-lc">Werlte, Germany</div></div><div style="text-align:center"><div class="comp-rs">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</div><div class="comp-rc">4.5 &bull; 292 reviews</div><div style="margin-top:6px"><span class="comp-vs g">No competitor in area</span></div></div></div>
+  </div>
+</div>
+
+<div class="s" id="reviews">
+  <div class="sh">
+    <h2>What Our Guests Say</h2>
+    <p class="st">Real reviews from real guests. Verified through Google.</p>
+    <div class="ln"></div>
+  </div>
+  <div class="rg">
+    <div class="rc">
+      <div class="rc-s">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</div>
+      <div class="rc-t">"Had the pleasure of visiting all 4 South African properties. Highly recommended! Well kept, clean, spacious and very comfortable. The food at all four properties was delicious and excellent value."</div>
+      <div class="rc-a">&#x2014; Derek Lipman</div>
+      <div class="rc-d">March 2023</div>
+      <div class="rc-pr">Visited all 4 SA properties</div>
+      <div class="rc-v">&#x2705; Google Verified</div>
+    </div>
+    <div class="rc">
+      <div class="rc-s">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</div>
+      <div class="rc-t">"Unexpectedly amazing hotel. Never expected to find such quality in Werlte. The rooms were spotless, the staff went above and beyond. The African style design is outstanding. Will definitely return!"</div>
+      <div class="rc-a">&#x2014; Werlte Guest</div>
+      <div class="rc-d">2025 &#x2014; Werlte, Germany</div>
+      <div class="rc-pr">African Sky Hotel Werlte</div>
+      <div class="rc-v">&#x2705; Google Verified</div>
+    </div>
+    <div class="rc">
+      <div class="rc-s">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</div>
+      <div class="rc-t">"Very very good and fantastic. The staff were friendly and the property was well maintained. Great value for money. Would recommend to anyone traveling through Mpumalanga."</div>
+      <div class="rc-a">&#x2014; Sibusiso Sibonakaliso</div>
+      <div class="rc-d">December 2025</div>
+      <div class="rc-pr">Mpumalanga property</div>
+      <div class="rc-v">&#x2705; Google Verified</div>
+    </div>
+    <div class="rc neg">
+      <div class="rc-s">&#x2605;&#x2605;<svg class="empty" viewBox="0 0 24 24" style="width:18px;height:18px;fill:#ddd"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg class="empty" viewBox="0 0 24 24" style="width:18px;height:18px;fill:#ddd"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg class="empty" viewBox="0 0 24 24" style="width:18px;height:18px;fill:#ddd"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+      <div class="rc-t">"Horrible in terms of customer service. The room was fine but the staff were unhelpful and dismissive when we raised concerns."</div>
+      <div class="rc-a">&#x2014; Google Reviewer</div>
+      <div class="rc-d">2024 &#x2014; Ermelo</div>
+      <div class="rc-pr">Ermelo Inn</div>
+      <div class="rc-v">&#x2705; Google Verified</div>
+    </div>
+  </div>
+</div>
+
+<div class="sd" id="ai">
+  <div class="s">
+    <div class="sh">
+      <h2>Now Powered by AI</h2>
+      <p class="st">JCE Media's AI technology transforms how guests discover, book, and experience African Sky Hotels &#x2014; increasing conversions while reducing costs by up to 65%.</p>
+      <div class="ln"></div>
+    </div>
+    <div class="ag">
+      <div class="ac"><div class="ac-ic">&#x1F4AC;</div><h3>Smart Booking Assistant</h3><p>AI chatbot available 24/7 to answer questions, recommend properties, and process bookings &#x2014; in English, German, and Afrikaans.</p><div class="ac-st"><div class="ac-sv">60s</div><div class="ac-sl">Avg Response Time</div></div></div>
+      <div class="ac"><div class="ac-ic">&#x2605;</div><h3>Review Intelligence</h3><p>Positive reviews auto-amplified across social media. Negative feedback privately routed for immediate resolution &#x2014; protecting your 4.0+ rating.</p><div class="ac-st"><div class="ac-sv">100%</div><div class="ac-sl">Review Coverage</div></div></div>
+      <div class="ac"><div class="ac-ic">&#x26A1;</div><h3>Instant Speed-to-Lead</h3><p>Every inquiry captured and responded to in under 60 seconds &#x2014; day or night, automatically. Zero lost bookings from late-night browsers.</p><div class="ac-st"><div class="ac-sv">0</div><div class="ac-sl">Lost Leads</div></div></div>
+      <div class="ac"><div class="ac-ic">&#x1F4CA;</div><h3>Full-Funnel Marketing</h3><p>AI optimizes ad spend across Google, Facebook, and Instagram &#x2014; delivering 416% ROI based on $15M+ managed ad spend.</p><div class="ac-st"><div class="ac-sv">416%</div><div class="ac-sl">Proven ROI</div></div></div>
+    </div>
+    <div style="margin-top:60px;position:relative;z-index:1">
+      <h3 style="font-family:var(--fd);color:#fff;font-size:1.3em;text-align:center;margin-bottom:24px;font-weight:700">Collection vs. Intelligence</h3>
+      <div style="overflow-x:auto">
+      <table style="width:100%;border-collapse:collapse;background:rgba(255,255,255,.03);border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.06)">
+        <tr style="background:rgba(46,51,101,.5)"><th style="padding:16px 24px;text-align:left;font-family:var(--fd);font-weight:600;font-size:.85em;color:var(--teal);text-transform:uppercase;letter-spacing:.5px">Capability</th><th style="padding:16px 24px;text-align:left;font-family:var(--fd);font-weight:600;font-size:.85em;color:#fff;text-transform:uppercase;letter-spacing:.5px">ReviewTap (Collection)</th><th style="padding:16px 24px;text-align:left;font-family:var(--fd);font-weight:600;font-size:.85em;color:#fff;text-transform:uppercase;letter-spacing:.5px">+ JCE Media (Intelligence)</th></tr>
+        <tr><td style="padding:14px 24px;border-bottom:1px solid rgba(255,255,255,.04);font-size:.9em;color:rgba(255,255,255,.75)">Review Collection</td><td style="padding:14px 24px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--teal);font-weight:700">&#x2713; NFC/QR at each property</td><td style="padding:14px 24px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--teal);font-weight:700">&#x2713; + AI auto-response</td></tr>
+        <tr><td style="padding:14px 24px;border-bottom:1px solid rgba(255,255,255,.04);font-size:.9em;color:rgba(255,255,255,.75)">Lead Response Time</td><td style="padding:14px 24px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--red);font-weight:700">&#x2717; Manual &#x2014; hours/days</td><td style="padding:14px 24px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--teal);font-weight:700">&#x2713; Under 60 seconds, 24/7</td></tr>
+        <tr><td style="padding:14px 24px;border-bottom:1px solid rgba(255,255,255,.04);font-size:.9em;color:rgba(255,255,255,.75)">Negative Review Handling</td><td style="padding:14px 24px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--red);font-weight:700">&#x2717; Public, unaddressed</td><td style="padding:14px 24px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--teal);font-weight:700">&#x2713; Privately routed</td></tr>
+        <tr><td style="padding:14px 24px;border-bottom:1px solid rgba(255,255,255,.04);font-size:.9em;color:rgba(255,255,255,.75)">Ad Spend Optimization</td><td style="padding:14px 24px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--red);font-weight:700">&#x2717; No targeting</td><td style="padding:14px 24px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--teal);font-weight:700">&#x2713; AI-optimized, 65% lower CPL</td></tr>
+        <tr><td style="padding:14px 24px;font-size:.9em;color:rgba(255,255,255,.75)">Multi-language Support</td><td style="padding:14px 24px;color:var(--red);font-weight:700">&#x2717; English only</td><td style="padding:14px 24px;color:var(--teal);font-weight:700">&#x2713; German, Afrikaans, English</td></tr>
+      </table>
+      </div>
+    </div>
+    <div class="jce">
+      <div class="jc"><div class="jc-n">416%</div><div class="jc-l">ROI</div></div>
+      <div class="jc"><div class="jc-n">65%</div><div class="jc-l">Lower CPL</div></div>
+      <div class="jc"><div class="jc-n">8.5x</div><div class="jc-l">ROAS</div></div>
+      <div class="jc"><div class="jc-n">$15M+</div><div class="jc-l">Ad Spend Managed</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="s">
+  <div class="roi-w">
+    <h3>&#x1F4CA; Calculate Your ROI with AI Marketing</h3>
+    <p class="roi-sb">See what JCE Media's AI-powered approach could deliver for African Sky Hotels.</p>
+    <div class="roi-fs">
+      <div class="roi-f"><label>Monthly Website Visitors</label><input type="number" id="rv" value="5000" min="0"></div>
+      <div class="roi-f"><label>Current Conversion Rate (%)</label><input type="number" id="rr" value="2" min="0" max="100" step="0.1"></div>
+      <div class="roi-f"><label>Avg Booking Value (R)</label><input type="number" id="ravg" value="2500" min="0"></div>
+      <div class="roi-f"><label>Monthly Ad Spend (R)</label><input type="number" id="rspend" value="15000" min="0"></div>
+    </div>
+    <div class="roi-btn"><button onclick="calcROI()">Calculate My ROI</button></div>
+    <div class="roi-rs" id="roi-res">
+      <div class="roi-rg">
+        <div><div class="roi-rv" id="rc0">R0</div><div class="roi-rl">Current Monthly Revenue</div></div>
+        <div><div class="roi-rv" id="rc1">R0</div><div class="roi-rl">Projected with AI</div></div>
+        <div><div class="roi-rv" id="rc2">0%</div><div class="roi-rl">Revenue Lift</div></div>
+        <div><div class="roi-rv" id="rc3">R0</div><div class="roi-rl">New CPL (65% lower)</div></div>
+      </div>
+      <div class="roi-note">Based on JCE Media's proven results: 416% ROI, 65% lower CPL across $15M+ managed ad spend.</div>
+    </div>
+  </div>
+</div>
+
+<div class="cta-s" id="contact">
+  <h2>Ready to Transform Your Guest Experience?</h2>
+  <p>From 3,000 reviews to 10,000. From manual responses to AI-powered intelligence. From collection to conversion.</p>
+  <div class="cta-btns">
+    <a href="mailto:info@jcemedia.com" class="btn-ai">&#x1F4E7; Schedule Strategy Call</a>
+    <a href="tel:+271****4959" class="btn-ol">&#x1F4DE; Call Us Now</a>
+  </div>
+</div>
+
+<div class="ft">
+  <p>&copy; 2026 African Sky Hotels and Resorts. All rights reserved.</p>
+  <p style="margin-top:6px">Powered by <a href="#">JCE Media</a> AI Marketing | <a href="#">ReviewTap</a> Review Collection</p>
+</div>
+
+<button class="cf" onclick="toggleChat()" title="Chat with our AI assistant">&#x1F4AC;</button>
+
+<div class="cm" id="chatModal">
+  <div class="cm-hd">
+    <div><div class="cm-ttl">AI Booking Assistant</div><div class="cm-sub">African Sky Hotels</div></div>
+    <button class="cm-cl" onclick="toggleChat()">&times;</button>
+  </div>
+  <div class="cm-bd" id="chatBody">
+    <div class="cm-msg-b">Hello! I'm the African Sky Hotels AI assistant. I can help you find the perfect property, check availability, or answer any questions. Where would you like to stay?</div>
+    <div class="cm-qbtns">
+      <button class="cm-qbtn" onclick="chatReply('White River')">White River</button>
+      <button class="cm-qbtn" onclick="chatReply('Germany')">Germany</button>
+      <button class="cm-qbtn" onclick="chatReply('All properties')">All Properties</button>
+    </div>
+  </div>
+  <div class="cm-ft">
+    <input type="text" class="cm-in" id="chatInput" placeholder="Type your message..." onkeypress="if(event.key==='Enter')chatSend()">
+    <button class="cm-snd" onclick="chatSend()">&#x27A4;</button>
+  </div>
+</div>
+
+<script>
+var slides=document.querySelectorAll('.hero-slides .s');
+var ci=0;
+setInterval(function(){
+  slides[ci].classList.remove('act');
+  ci=(ci+1)%slides.length;
+  slides[ci].classList.add('act');
+},5000);
+
+function calcROI(){
+  var v=parseInt(document.getElementById('rv').value)||0;
+  var r=parseFloat(document.getElementById('rr').value)||0;
+  var avg=parseInt(document.getElementById('ravg').value)||0;
+  var spend=parseInt(document.getElementById('rspend').value)||0;
+  var curRev=v*(r/100)*avg;
+  var aiRev=v*((r*2.5)/100)*avg;
+  var lift=((aiRev-curRev)/curRev*100)||0;
+  var curCPL=spend/(v*(r/100))||0;
+  var newCPL=curCPL*0.35;
+  document.getElementById('rc0').textContent='R'+Math.round(curRev).toLocaleString();
+  document.getElementById('rc1').textContent='R'+Math.round(aiRev).toLocaleString();
+  document.getElementById('rc2').textContent=Math.round(lift)+'%';
+  document.getElementById('rc3').textContent='R'+Math.round(newCPL).toLocaleString();
+  document.getElementById('roi-res').classList.add('show');
+}
+
+function toggleChat(){
+  document.getElementById('chatModal').classList.toggle('show');
+}
+
+var chatResponses={
+  'White River':"Pine Lake Inn in White River is our flagship SA property &#x2014; 4.2 stars with 603 reviews. Lakeside luxury from R850/night. For bookings call +27 13 751 5036 or email pinelake@africanskyhotels.com",
+  'Germany':"Our Werlte property is our highest-rated at 4.5 stars! Guests say they never expected to find such quality in Werlte. From EUR 85/night. Call +49 5951 987 760 or email info@africanskyhotel.de",
+  'All properties':"We have 5 properties: Pine Lake Inn (White River, 4.2&#x2605;), Ermelo Inn (3.6&#x2605;), Newcastle Inn (4.0&#x2605;), Harrismith Inn (4.1&#x2605;), and our flagship in Werlte, Germany (4.5&#x2605;). Which area interests you?"
+};
+
+function chatReply(msg){
+  var chatBody=document.getElementById('chatBody');
+  var userMsg=document.createElement('div');
+  userMsg.className='cm-msg-u';
+  userMsg.textContent=msg;
+  chatBody.appendChild(userMsg);
+  setTimeout(function(){
+    var botMsg=document.createElement('div');
+    botMsg.className='cm-msg-b';
+    botMsg.textContent=chatResponses[msg]||"Thanks for your interest! For detailed availability, please call us at 012 998 4959 or email info@africanskyhotels.com";
+    chatBody.appendChild(botMsg);
+    chatBody.scrollTop=chatBody.scrollHeight;
+  },600);
+  chatBody.scrollTop=chatBody.scrollHeight;
+}
+
+function chatSend(){
+  var input=document.getElementById('chatInput');
+  var msg=input.value.trim();
+  if(!msg)return;
+  chatReply(msg);
+  input.value='';
+}
+</script>
+</body>
+</html>
