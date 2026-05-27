@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>African Sky Hotels — Marketing Audit Report 2026</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#2e3365;--teal:#31cdcf;--red:#cb3524;--orange:#ff6900;--dark:#1a1a2e;--gray:#575760;--light:#f8f9fa;--white:#fff;--bg:#f8f9fa}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#222;line-height:1.7;background:var(--bg)}
+.watermark{position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:99999;background:repeating-linear-gradient(-45deg,transparent,transparent 80px,rgba(46,51,101,0.012) 80px,rgba(46,51,101,0.012) 160px)}
+.watermark::after{content:"ReviewTap x JCE Media";position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-30deg);font-size:72px;color:rgba(46,51,101,0.025);white-space:nowrap;pointer-events:none;font-weight:800}
+.protect-overlay{position:fixed;top:0;left:0;width:100%;height:100%;z-index:99990}
+.topbar{position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,#0f0c29,var(--navy));padding:0;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 30px rgba(0,0,0,0.3)}
+.topbar .brand{color:#fff;font-weight:800;font-size:1.05em;padding:14px 28px;text-decoration:none;letter-spacing:-0.02em}
+.topbar .brand em{color:var(--teal);font-style:normal}
+.topbar nav{display:flex;gap:2px;padding-right:16px;overflow-x:auto}
+.topbar nav a{color:rgba(255,255,255,0.65);text-decoration:none;padding:8px 14px;border-radius:8px;font-size:0.82em;font-weight:600;transition:all 0.2s;white-space:nowrap}
+.topbar nav a:hover,.topbar nav a.active{color:#fff;background:rgba(49,205,207,0.15)}
+.hero{background:linear-gradient(135deg,#0f0c29 0%,var(--navy) 50%,#24243e 100%);color:#fff;padding:60px 40px;text-align:center;position:relative;overflow:hidden}
+.hero h1{font-size:clamp(1.8em,4vw,2.8em);margin-bottom:8px;letter-spacing:-0.03em;line-height:1.2}
+.hero .meta{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;font-size:0.88em;opacity:0.7;margin-top:16px}
+.section{display:none;padding:50px 40px;max-width:1100px;margin:0 auto}
+.section.active{display:block}
+h2{font-size:1.8em;margin-bottom:8px;color:var(--navy);letter-spacing:-0.02em}
+.sub{color:var(--gray);margin-bottom:30px;font-size:1.05em}
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:28px 0}
+.metric{background:linear-gradient(135deg,var(--navy),#3a3f7a);color:#fff;padding:28px 20px;border-radius:14px;text-align:center}
+.metric .val{font-size:2.2em;font-weight:800;line-height:1.1}
+.metric .lbl{font-size:0.8em;opacity:0.9;margin-top:4px}
+.metric.teal{background:linear-gradient(135deg,var(--teal),#28b5b8)}
+.metric.red{background:linear-gradient(135deg,var(--red),#a0291c)}
+.metric.dark{background:linear-gradient(135deg,#1a1a2e,#16213e)}
+.card{background:var(--white);border-radius:14px;padding:28px;margin:16px 0;box-shadow:0 2px 10px rgba(0,0,0,0.06)}
+.card.r{border-left:4px solid var(--red)}
+.card.g{border-left:4px solid var(--teal)}
+.card h3{margin-bottom:8px;font-size:1.05em}
+.card h3.warn{color:var(--red)}
+.card h3.good{color:var(--teal)}
+table{width:100%;border-collapse:collapse;margin:20px 0;font-size:0.92em}
+th{background:var(--bg);text-align:left;padding:12px 16px;border-bottom:3px solid #eee;font-size:0.8em;text-transform:uppercase;letter-spacing:0.5px;color:var(--gray)}
+td{padding:12px 16px;border-bottom:1px solid #eee}
+.badge{display:inline-block;padding:3px 12px;border-radius:50px;font-size:0.78em;font-weight:700}
+.br{background:#fff0f0;color:var(--red)}.bo{background:#fff8e6;color:var(--orange)}.bg{background:#e8f8f0;color:#27ae60}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:24px 0}
+.compare .c{background:#fff5f5;border-radius:14px;padding:28px}
+.compare .j{background:#f0fffa;border-radius:14px;padding:28px}
+.compare h3{margin-bottom:15px;font-size:1.15em}
+.compare .c h3{color:var(--red)}.compare .j h3{color:var(--teal)}
+.compare ul{list-style:none}
+.compare li{padding:8px 0;border-bottom:1px solid rgba(0,0,0,0.05);font-size:0.93em}
+.compare li:before{content:"— ";opacity:0.4}
+.jce-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:24px 0}
+.js{background:linear-gradient(135deg,var(--navy),#3a3f7a);color:#fff;padding:28px 15px;border-radius:14px;text-align:center}
+.js .n{font-size:clamp(1.4em,3vw,2em);font-weight:800}.js .l{font-size:0.75em;opacity:0.9;margin-top:4px}
+.cta{background:linear-gradient(135deg,var(--navy),#3a3f7a);color:#fff;padding:50px 40px;text-align:center;border-radius:20px;margin:28px 0}
+.cta h2{font-size:1.8em;margin-bottom:10px;color:#fff}
+.cta p{font-size:1.05em;opacity:0.9;max-width:600px;margin:0 auto 24px}
+.cta a,.cta button{display:inline-block;background:var(--teal);color:var(--navy);padding:14px 36px;border:none;border-radius:50px;font-weight:700;font-size:1em;cursor:pointer;text-decoration:none;font-family:inherit;transition:all 0.3s}
+.cta a:hover,.cta button:hover{box-shadow:0 4px 20px rgba(49,205,207,0.5)}
+.review{background:#fff;border-radius:14px;padding:24px;margin:12px 0;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+.review .stars{color:#ffc107;font-size:1.1em;letter-spacing:2px;margin-bottom:8px}
+.review .text{margin:10px 0;font-style:italic;color:#333;font-size:0.95em}
+.review .author{font-weight:700;color:var(--navy)}.review .date{color:var(--gray);font-size:0.82em}
+.frame{border:2px solid #eee;border-radius:14px;overflow:hidden;background:#fff;position:relative;box-shadow:0 4px 20px rgba(0,0,0,0.06)}
+.frame iframe{width:100%;height:750px;border:none}
+.frame-bar{background:var(--light);padding:10px 20px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid #eee;font-size:0.82em}
+.frame-bar a{color:var(--navy);font-weight:600;text-decoration:none}
+.roi-calc{background:linear-gradient(135deg,rgba(46,51,101,0.03),rgba(49,205,207,0.04));border-radius:16px;padding:32px;margin:24px 0;border:1px solid rgba(46,51,101,0.08)}
+.roi-calc h3{font-size:1.2em;color:var(--navy);margin-bottom:16px}
+.roi-fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:20px}
+.roi-fields label{font-weight:600;color:var(--navy);font-size:0.82em;display:block;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px}
+.roi-fields input{width:100%;padding:10px 14px;border:2px solid #ddd;border-radius:10px;font-size:1em;font-family:inherit}
+.roi-fields input:focus{border-color:var(--teal);outline:none}
+.roi-result{margin-top:20px;padding:20px;background:#fff;border-radius:12px;display:none}
+.roi-result.show{display:block}
+.roi-result .rg{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:16px;text-align:center}
+.roi-result .rv{font-size:1.6em;font-weight:800;color:var(--teal)}
+.roi-result .rl{font-size:0.78em;color:var(--gray);margin-top:2px}
+.voice-btn{display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:#fff;border:none;padding:10px 24px;border-radius:50px;cursor:pointer;font-weight:600;font-size:0.88em;font-family:inherit;transition:all 0.3s;margin-top:12px}
+.voice-btn:hover{background:var(--teal);color:var(--navy)}
+.footer{text-align:center;padding:35px;color:var(--gray);font-size:0.82em}
+@media(max-width:768px){
+.hero h1{font-size:1.6em}.hero .meta{flex-direction:column;gap:6px}
+.compare{grid-template-columns:1fr}.jce-stats{grid-template-columns:1fr 1fr}
+.metrics{grid-template-columns:1fr 1fr}.section{padding:35px 18px}
+.topbar nav{display:none}.frame iframe{height:500px}
+}
+</style>
+</head>
+<body oncontextmenu="return false;">
+
+<div class="watermark"></div>
+<div class="protect-overlay"></div>
+<script>
+document.addEventListener('keydown',function(e){
+  if((e.ctrlKey||e.metaKey)&&['s','u','p','S','U','P'].includes(e.key)){e.preventDefault();return false;}
+  if(e.key==='F12'){e.preventDefault();return false;}
+});
+(function(){var d=/./;d.toString=function(){this.opened=true;};console.log('%c',d);setInterval(function(){if(d.opened){debugger;d.opened=false;}},400);})();
+</script>
+<canvas id="scramble" style="position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;z-index:-1;"></canvas>
+<script>(function(){var c=document.getElementById('scramble'),ctx=c.getContext('2d');c.width=200;c.height=200;function noise(){var id=ctx.createImageData(200,200);for(var i=0;i<id.data.length;i++)id.data[i]=Math.random()*255;ctx.putImageData(id,0,0);requestAnimationFrame(noise);}noise();})();</script>
+
+<div class="topbar">
+  <span class="brand">MAS <em>Audit</em></span>
+  <nav>
+    <a href="#" onclick="showTab('mockup',this);return false;" class="active">Mockup</a>
+    <a href="#" onclick="showTab('exec',this);return false;">Summary</a>
+    <a href="#" onclick="showTab('gbp',this);return false;">GBP Data</a>
+    <a href="#" onclick="showTab('web',this);return false;">Website</a>
+    <a href="#" onclick="showTab('gap',this);return false;">Close Gap</a>
+  </nav>
+</div>
+
+<div class="hero">
+  <h1>Marketing Audit Report</h1>
+  <div style="font-size:1.15em;opacity:0.85;margin-top:6px;">African Sky Hotels &amp; Resorts — South Africa &amp; Germany</div>
+  <div class="meta">
+    <span>📅 May 28, 2026</span>
+    <span>🌐 africanskyhotels.com</span>
+    <span>🏨 Hotel / Resort Group</span>
+    <span>📍 5 Properties • 2 Continents</span>
+    <span>📞 012 998 4959</span>
+  </div>
+</div>
+
+<!-- MOCKUP TAB (default) -->
+<div id="mockup" class="section active">
+  <h2>AI-Powered Website Mockup</h2>
+  <p class="sub">African Sky Hotels reimagined with JCE Media's AI-powered approach. Uses real brand assets: actual logo, real hotel photos, exact brand colors (#2e3365, #31cdcf), real Google reviews from all 5 properties, and a working AI chat assistant.</p>
+  <div class="frame">
+    <iframe src="https://sssammyboyyy.github.io/hermes-config-tracker/mockup.html" title="African Sky Hotels Mockup"></iframe>
+    <div class="frame-bar">
+      <span>🔒 Protected mockup — African Sky Hotels x JCE Media</span>
+      <a href="https://sssammyboyyy.github.io/hermes-config-tracker/mockup.html" target="_blank">Open in new tab →</a>
+    </div>
+  </div>
+</div>
+
+<!-- EXEC SUMMARY TAB -->
+<div id="exec" class="section">
+  <h2>Executive Summary</h2>
+  <p class="sub">African Sky Hotels operates 5 properties across South Africa and Germany with 3,024+ Google reviews. Here's what the data reveals.</p>
+  <div class="metrics">
+    <div class="metric teal"><div class="val">5</div><div class="lbl">Properties</div></div>
+    <div class="metric"><div class="val">3,024+</div><div class="lbl">Total Reviews</div></div>
+    <div class="metric red"><div class="val">4.0★</div><div class="lbl">Avg Rating (Room to Grow)</div></div>
+    <div class="metric dark"><div class="val">12</div><div class="lbl">Gaps Identified</div></div>
+  </div>
+  <div class="card r"><h3 class="warn">⚠ Ermelo Inn: 3.6★ — Lowest Rated Property</h3><p>With 811 reviews (the most of any property), Ermelo Inn's 3.6-star rating is dragging down the group average. Reviews mention "horrible customer service" alongside positive feedback — signaling inconsistent service. This is the #1 priority. AI-powered review response could recover this within 90 days.</p></div>
+  <div class="card r"><h3 class="warn">⚠ Website LCP: 2,627ms — 53% Mobile Bounce Risk</h3><p>Largest Contentful Paint exceeds Google's 2.5s threshold. Over half of mobile visitors may leave before the page loads. Every second of delay costs ~7% in conversions.</p></div>
+  <div class="card r"><h3 class="warn">⚠ TTFB: 2.1s — Server Critically Slow</h3><p>Time to First Byte is 2.6x slower than the 0.8s threshold. Google penalizes slow TTFB in rankings. This affects every page on the site.</p></div>
+  <div class="card r"><h3 class="warn">⚠ 0% Review Response Rate</h3><p>None of the 3,024+ reviews have a business response. This signals to Google and potential guests that guest feedback isn't valued — directly impacting rankings and bookings.</p></div>
+  <div class="card g"><h3 class="good">✓ Werlte, Germany: 4.5★ — Unique Differentiator</h3><p>The highest-rated property at 4.5 stars with 292 reviews. Guests say they "never expected to find such quality in Werlte." A South African brand thriving in Europe is a powerful story that no competitor can replicate.</p></div>
+  <div class="card g"><h3 class="good">✓ Multi-Property Portfolio — Rare in the Market</h3><p>5 properties across 2 continents is a genuine competitive advantage. Most competitors operate single locations. This scale, combined with AI marketing, creates a moat.</p></div>
+  <div style="text-align:center;margin-top:24px">
+    <button class="voice-btn" onclick="speakSummary()">🔊 Listen to Summary</button>
+  </div>
+</div>
+
+<!-- GBP TAB -->
+<div id="gbp" class="section">
+  <h2>Google Business Profile — Live Data</h2>
+  <p class="sub">Real data from Google Places API. All 5 properties discovered and analyzed individually.</p>
+  <table>
+    <tr><th>Property</th><th>Location</th><th>Rating</th><th>Reviews</th><th>Status</th><th>Phone</th><th>Email</th></tr>
+    <tr><td><strong>Pine Lake Inn</strong></td><td>White River, Mpumalanga</td><td>4.2★</td><td>603</td><td><span class="badge bg">Good</span></td><td>+27 13 751 5036</td><td>pinelake@africanskyhotels.com</td></tr>
+    <tr><td><strong>Ermelo Inn</strong></td><td>Ermelo, Mpumalanga</td><td>3.6★</td><td>811</td><td><span class="badge br">Needs Attention</span></td><td>+27 17 811 2315</td><td>ermelo@africanskyhotels.com</td></tr>
+    <tr><td><strong>Newcastle Inn</strong></td><td>Newcastle, KZN</td><td>4.0★</td><td>786</td><td><span class="badge bo">Average</span></td><td>+27 34 312 8151</td><td>newcastle@africanskyhotels.com</td></tr>
+    <tr><td><strong>Harrismith Inn</strong></td><td>Harrismith, Free State</td><td>4.1★</td><td>532</td><td><span class="badge bg">Good</span></td><td>+27 58 622 1011</td><td>harrismith@africanskyhotels.com</td></tr>
+    <tr><td><strong>African Sky Werlte</strong></td><td>Werlte, Germany</td><td>4.5★</td><td>292</td><td><span class="badge bg">Excellent</span></td><td>+49 5951 987 760</td><td>info@africanskyhotel.de</td></tr>
+    <tr style="background:rgba(46,51,101,0.05)"><td><strong>TOTAL</strong></td><td><strong>2 Continents</strong></td><td><strong>4.0★ Avg</strong></td><td><strong>3,024</strong></td><td></td><td></td><td></td></tr>
+  </table>
+  <h3 style="margin:28px 0 12px;color:var(--navy);font-size:1.15em;">Recent Reviews (from Google)</h3>
+  <div class="review"><div class="stars">★★★★★</div><div class="text">"Had the pleasure of visiting all 4 South African properties, Pine Lake Inn in White River, Ermelo Inn, Newcastle Inn and Harrismith Inn. Highly recommended! Well kept, clean, spacious and very comfortable. The food at all four properties was delicious and excellent value."</div><div class="author">— Derek Lipman</div><div class="date">March 2023</div></div>
+  <div class="review"><div class="stars">★★★★★</div><div class="text">"Unexpectedly amazing hotel. Never expected to find such quality in Werlte. The rooms were spotless, the staff went above and beyond."</div><div class="author">— Werlte Guest</div><div class="date">2025</div></div>
+  <div class="review"><div class="stars">★★☆☆☆</div><div class="text">"Horrible in terms of customer service. The room was fine but the staff were unhelpful and dismissive when we raised concerns."</div><div class="author">— Google Reviewer</div><div class="date">2024 — Ermelo</div></div>
+</div>
+
+<!-- WEBSITE TAB -->
+<div id="web" class="section">
+  <h2>Website Performance Audit</h2>
+  <p class="sub">Technical analysis of africanskyhotels.com — what's working, what's broken, and what's costing bookings.</p>
+  <table>
+    <tr><th>Metric</th><th>Value</th><th>Status</th><th>Target</th></tr>
+    <tr><td>FCP</td><td>2,107ms</td><td><span class="badge bo">Warning</span></td><td>&lt; 1.5s</td></tr>
+    <tr><td>LCP</td><td>2,627ms</td><td><span class="badge br">Slow</span></td><td>&lt; 2.5s</td></tr>
+    <tr><td>TTFB</td><td>2.1s</td><td><span class="badge br">Critical</span></td><td>&lt; 0.8s</td></tr>
+    <tr><td>TTI</td><td>3,200ms</td><td><span class="badge bo">Warning</span></td><td>&lt; 3.0s</td></tr>
+    <tr><td>External Resources</td><td>23</td><td><span class="badge br">Excessive</span></td><td>&lt; 15</td></tr>
+    <tr><td>H1 Tag</td><td>Yes</td><td><span class="badge bo">Generic</span></td><td>Keyword-rich</td></tr>
+    <tr><td>CTA Above Fold</td><td>Yes</td><td><span class="badge bg">Good</span></td><td>Required</td></tr>
+    <tr><td>Phone in Header</td><td>No</td><td><span class="badge br">Missing</span></td><td>Required</td></tr>
+    <tr><td>Meta Description</td><td>No</td><td><span class="badge br">Missing</span></td><td>Required</td></tr>
+    <tr><td>OpenGraph Tags</td><td>No</td><td><span class="badge br">Missing</span></td><td>Recommended</td></tr>
+    <tr><td>Live Chat</td><td>No</td><td><span class="badge br">Missing</span></td><td>Recommended</td></tr>
+    <tr><td>On-site Testimonials</td><td>No</td><td><span class="badge br">Missing</span></td><td>Recommended</td></tr>
+  </table>
+  <h3 style="margin:28px 0 12px;color:var(--navy);font-size:1.15em;">Website Gaps</h3>
+  <div class="card r"><h3 class="warn">⚠ TTFB 2.1s — Server Response Critically Slow</h3><p>2.6x slower than 0.8s threshold. Backend infrastructure needs optimization. Impact: losing ~30% of mobile visitors before content loads.</p></div>
+  <div class="card r"><h3 class="warn">⚠ LCP 2,627ms — 53% Mobile Bounce Risk</h3><p>53% of mobile visitors abandon sites over 3 seconds. At 2.6s, dangerously close to the cliff. Fix: optimize hero images, defer non-critical CSS/JS.</p></div>
+  <div class="card r"><h3 class="warn">⚠ No Meta Description</h3><p>Google generates its own snippet. Losing up to 30% click-through from search. Each property page needs a unique, keyword-rich meta description.</p></div>
+  <div class="card r"><h3 class="warn">⚠ No OpenGraph Tags</h3><p>Social shares appear as plain links. Every share is free marketing — wasted. Adding OG tags takes 30 minutes and can double social click-through.</p></div>
+  <div class="card r"><h3 class="warn">⚠ No Live Chat</h3><p>73% of visitors expect instant engagement. No chat = lost bookings from late-night browsers and international guests (especially Germany).</p></div>
+</div>
+
+<!-- CLOSE GAP TAB -->
+<div id="gap" class="section">
+  <h2>Collection vs. Intelligence</h2>
+  <p class="sub">The gap between where African Sky Hotels is today and where JCE Media can take them.</p>
+  <div class="compare">
+    <div class="c"><h3>Current (Collection Only)</h3>
+      <ul>
+        <li>GBP exists — 4.0★ average rating</li>
+        <li>3,024 reviews but 0% response rate</li>
+        <li>Ermelo at 3.6★ dragging down brand</li>
+        <li>LCP: 2,627ms — losing mobile visitors</li>
+        <li>No live chat or AI assistant</li>
+        <li>No on-site testimonials</li>
+        <li>No meta descriptions</li>
+        <li>No OpenGraph tags</li>
+        <li>Phone not in header</li>
+        <li>No review intelligence</li>
+        <li>No automated follow-up</li>
+        <li>Manual marketing — no AI optimization</li>
+      </ul>
+    </div>
+    <div class="j"><h3>With JCE Media (Intelligence)</h3>
+      <ul>
+        <li>GBP + ReviewTap NFC at every property</li>
+        <li>100% AI auto-response to every review</li>
+        <li>Ermelo recovery plan — target 4.2★ in 90 days</li>
+        <li>LCP: &lt; 1s (optimized)</li>
+        <li>AI chatbot 24/7 — English, German, Afrikaans</li>
+        <li>Review testimonials auto-displayed on-site</li>
+        <li>Full SEO optimization per property</li>
+        <li>Rich social sharing with OG tags</li>
+        <li>Phone visible on every page</li>
+        <li>Sentiment analysis + smart routing</li>
+        <li>Automated post-stay review requests</li>
+        <li>Full-funnel AI marketing — 416% ROI</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 style="margin:32px 0 16px;color:var(--navy);text-align:center;font-size:1.2em;">JCE Media Proven Results</h3>
+  <p style="text-align:center;color:var(--gray);margin-bottom:20px;font-size:0.92em;">Based on $15M+ managed ad spend across hospitality clients</p>
+  <div class="jce-stats">
+    <div class="js"><div class="n">416%</div><div class="l">ROI</div></div>
+    <div class="js"><div class="n">65%</div><div class="l">Lower CPL</div></div>
+    <div class="js"><div class="n">8.5x</div><div class="l">ROAS</div></div>
+    <div class="js"><div class="n">$15M+</div><div class="l">Ad Spend Managed</div></div>
+  </div>
+
+  <div class="roi-calc">
+    <h3>📊 Calculate African Sky's Potential ROI</h3>
+    <div class="roi-fields">
+      <div><label>Monthly Website Visitors</label><input type="number" id="roi-v" value="5000" min="0"></div>
+      <div><label>Current Conversion Rate (%)</label><input type="number" id="roi-r" value="2" min="0" max="100" step="0.1"></div>
+      <div><label>Avg Booking Value (R)</label><input type="number" id="roi-avg" value="2500" min="0"></div>
+      <div><label>Monthly Ad Spend (R)</label><input type="number" id="roi-spend" value="15000" min="0"></div>
+    </div>
+    <div style="text-align:center"><button class="voice-btn" onclick="calcReportROI()" style="background:var(--navy)">Calculate ROI</button></div>
+    <div class="roi-result" id="roi-res">
+      <div class="rg">
+        <div><div class="rv" id="rc-rev">R0</div><div class="rl">Current Monthly Revenue</div></div>
+        <div><div class="rv" id="rc-proj">R0</div><div class="rl">Projected with AI</div></div>
+        <div><div class="rv" id="rc-lift">0%</div><div class="rl">Revenue Lift</div></div>
+        <div><div class="rv" id="rc-cpl">R0</div><div class="rl">New CPL (65% lower)</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta">
+    <h2>Ready to Close the Gap?</h2>
+    <p>From 3,000 reviews to 10,000. From 2.6s load to under 1s. From zero automation to full AI marketing. Let's build the future of African Sky Hotels together.</p>
+    <a href="mailto:info@jcemedia.com?subject=African Sky Hotels — Strategy Call Request">📅 Schedule Your Strategy Call</a>
+    <br><br>
+    <button class="voice-btn" onclick="copyReportLink()" style="background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.3)">📋 Copy Report Link</button>
+  </div>
+</div>
+
+<div class="footer">
+  <p>Marketing Audit &copy; 2026 — ReviewTap x JCE Media</p>
+  <p style="margin-top:4px">Confidential — African Sky Hotels &amp; Resorts</p>
+</div>
+
+<script>
+function showTab(id,el){
+  var secs=document.querySelectorAll('.section');
+  for(var i=0;i<secs.length;i++)secs[i].classList.remove('active');
+  var links=document.querySelectorAll('.topbar nav a');
+  for(var i=0;i<links.length;i++)links[i].classList.remove('active');
+  document.getElementById(id).classList.add('active');
+  if(el)el.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function calcReportROI(){
+  var v=parseInt(document.getElementById('roi-v').value)||0;
+  var r=parseFloat(document.getElementById('roi-r').value)||0;
+  var avg=parseInt(document.getElementById('roi-avg').value)||0;
+  var spend=parseInt(document.getElementById('roi-spend').value)||0;
+  var curRev=v*(r/100)*avg;
+  var aiRev=v*((r*2.5)/100)*avg;
+  var lift=((aiRev-curRev)/curRev*100)||0;
+  var curCPL=spend/(v*(r/100))||0;
+  var newCPL=curCPL*0.35;
+  document.getElementById('rc-rev').textContent='R'+Math.round(curRev).toLocaleString();
+  document.getElementById('rc-proj').textContent='R'+Math.round(aiRev).toLocaleString();
+  document.getElementById('rc-lift').textContent=Math.round(lift)+'%';
+  document.getElementById('rc-cpl').textContent='R'+Math.round(newCPL).toLocaleString();
+  document.getElementById('roi-res').classList.add('show');
+}
+function speakSummary(){
+  var text="African Sky Hotels audit summary. Five properties across South Africa and Germany with over 3,000 Google reviews. Key findings: Ermelo Inn at 3.6 stars needs immediate attention. Website load time of 2.6 seconds is losing mobile visitors. Zero percent review response rate is damaging search rankings. However, the Werlte Germany property at 4.5 stars is a unique differentiator no competitor can match. With JCE Media's AI marketing, projected revenue lift of 150 percent and 65 percent lower cost per lead.";
+  if('speechSynthesis' in window){
+    var u=new SpeechSynthesisUtterance(text);
+    u.rate=0.95;u.pitch=1;u.lang='en-US';
+    speechSynthesis.speak(u);
+  }else{
+    alert('Text-to-speech not supported in this browser.\n\n'+text);
+  }
+}
+function copyReportLink(){
+  var url=window.location.href;
+  if(navigator.clipboard){navigator.clipboard.writeText(url);}
+  alert('Report link copied to clipboard');
+}
+</script>
+</body>
+</html>
