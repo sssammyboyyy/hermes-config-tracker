@@ -1,0 +1,50 @@
+{
+  "White River": [
+    {
+      "name": "ANEW Resort White River Mbombela",
+      "rating": 4.1,
+      "reviews": 1875
+    },
+    {
+      "name": "Hotel 247 @ White River",
+      "rating": 4.1,
+      "reviews": 403
+    },
+    {
+      "name": "Premier Hotel The Winkler",
+      "rating": 4.2,
+      "reviews": 718
+    }
+  ],
+  "Ermelo": [
+    {
+      "name": "Bonfai Residence",
+      "rating": 4.8,
+      "reviews": 16
+    },
+    {
+      "name": "The Stella Guest House & Spa",
+      "rating": 4.9,
+      "reviews": 25
+    }
+  ],
+  "Newcastle": [
+    {
+      "name": "ANEW Resort Vulintaba Newcastle",
+      "rating": 4.2,
+      "reviews": 1282
+    },
+    {
+      "name": "Tramonto Boutique Hotel",
+      "rating": 4.5,
+      "reviews": 976
+    },
+    {
+      "name": "Blackrock Hotel",
+      "rating": 4.2,
+      "reviews": 1003
+    }
+  ],
+  "Harrismith": [],
+  "Werlte": []
+}
